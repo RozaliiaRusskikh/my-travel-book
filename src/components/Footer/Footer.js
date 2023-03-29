@@ -3,7 +3,7 @@ import "./Footer.scss";
 function Footer() {
   return (
     <footer className="footer">
-      <h1>Footer</h1>
+      <p className="footer-content">Copyright © 2023 My Travel Book | All Rights Reserved</p>
     </footer>
   );
 }

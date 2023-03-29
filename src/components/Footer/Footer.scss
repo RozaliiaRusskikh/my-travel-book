@@ -1,0 +1,12 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.footer {
+  background-color: $travelbook-background;
+  padding: 1.3rem;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

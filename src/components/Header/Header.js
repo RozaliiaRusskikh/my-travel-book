@@ -1,32 +1,50 @@
 import "./Header.scss";
+import logo from "../../assets/logo/logo.png";
+import { Link, NavLink } from "react-router-dom";
 
 function Header() {
   return (
     <header className="header">
-      <nav class="main-nav">
-        <a class="main-nav__logo-link" href="../index.html">
-          Travel Site{" "}
-        </a>
-        <ul class="main-nav__list">
-          <li class="main-nav__item">
-            <a class="main-nav__link" href="../index.html">
+      <nav className="header__main-nav">
+        <Link className="header__logo-link" to="/">
+          <img className="header__logo" src={logo} alt="my travel book logo" />
+        </Link>
+        <ul className="header__main-nav-list">
+          <li className="header__main-nav-item">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive
+                  ? "header__main-nav-link header__main-nav-link--active"
+                  : "header__main-nav-link"
+              }
+            >
               Home
-            </a>
+            </NavLink>
           </li>
-          <li class="main-nav__item">
-            <a class="main-nav__link" href="../pages/hawaii.html">
-              Hawaii
-            </a>
+          <li className="header__main-nav-item">
+            <NavLink
+              to="/travel-notes"
+              className={({ isActive }) =>
+                isActive
+                  ? "header__main-nav-link header__main-nav-link--active"
+                  : "header__main-nav-link"
+              }
+            >
+              Travel Notes
+            </NavLink>
           </li>
-          <li class="main-nav__item">
-            <a class="main-nav__link" href="../pages/iceland.html">
-              Iceland
-            </a>
-          </li>
-          <li class="main-nav__item">
-            <a class="main-nav__link" href="../pages/greece.html">
-              Greece
-            </a>
+          <li className="header__main-nav-item">
+            <NavLink
+              to="/country-facts"
+              className={({ isActive }) =>
+                isActive
+                  ? "header__main-nav-link header__main-nav-link--active"
+                  : "header__main-nav-link"
+              }
+            >
+              Country Facts
+            </NavLink>
           </li>
         </ul>
       </nav>

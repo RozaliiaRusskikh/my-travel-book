@@ -60,4 +60,9 @@ li {
 a {
   text-decoration: none;
   color: $travelbook-black;
+  cursor: pointer;
+
+  &:hover {
+    color: $travelbook-orange;
+  }
 }
