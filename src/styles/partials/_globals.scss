@@ -1,0 +1,63 @@
+@use "./typography" as *;
+@use "./variables" as *;
+@use "./mixins" as *;
+
+// General styling
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", Verdana, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: $travelbook-black;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+//Textarea, input styling
+
+textarea,
+input {
+  font-family: inherit;
+  font-weight: 100;
+  background-color: $alabaster;
+  border: 1px solid $mercury;
+  border-radius: 4px;
+  padding: 0.75rem;
+
+  @include tablet {
+    font-weight: 100;
+    padding: 1rem;
+  }
+
+  &::placeholder {
+    color: $travelbook-black;
+  }
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid $travelbook-blue;
+}
+
+textarea:focus {
+  outline: none;
+  border: 2px solid $travelbook-blue;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $travelbook-black;
+}
