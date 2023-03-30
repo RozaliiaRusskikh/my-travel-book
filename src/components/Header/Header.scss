@@ -4,11 +4,12 @@
 
 .header {
   padding: 0 1rem;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
+  background-color: $travelbook-background;
 
   @include tablet {
     padding: 0 3rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   &__main-nav {
@@ -27,6 +28,16 @@
     align-items: center;
   }
 
+  &__logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include tablet {
+    justify-content: flex-start;
+    }
+  }
+
   &__logo {
     width: 6rem;
 
@@ -35,11 +46,23 @@
     }
   }
 
+  &__logo-text {
+    display: none;
+    width: 50%;
+
+    @include tablet {
+      display: inline;
+      color: $travelbook-blue-dark;
+      font-style: italic;
+    }
+  }
+
   &__main-nav-list {
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   &__main-nav-item {
@@ -53,6 +76,7 @@
 
   &__main-nav-link {
     font-weight: 700;
+    text-transform: uppercase;
 
     &--active {
       color: $travelbook-orange;

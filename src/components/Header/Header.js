@@ -6,9 +6,18 @@ function Header() {
   return (
     <header className="header">
       <nav className="header__main-nav">
-        <Link className="header__logo-link" to="/">
-          <img className="header__logo" src={logo} alt="my travel book logo" />
-        </Link>
+        <div className="header__logo-container">
+          <Link className="header__logo-link" to="/">
+            <img
+              className="header__logo"
+              src={logo}
+              alt="my travel book logo"
+            />
+          </Link>
+          <p className="header__logo-text">
+            for the curious minded travel lovers...
+          </p>
+        </div>
         <ul className="header__main-nav-list">
           <li className="header__main-nav-item">
             <NavLink

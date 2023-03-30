@@ -28,10 +28,11 @@
     color: $travelbook-white;
     text-align: center;
     width: 80%;
+    font-style: italic;
 
     @include tablet {
       padding-right: 3rem;
-      width: 40%;
+      width: 35%;
     }
   }
 
@@ -41,11 +42,14 @@
     margin-bottom: 1rem;
 
     @include tablet {
-      font-size: 1.3rem;
+      font-size: 1.7rem;
       margin-bottom: 2rem;
     }
     @include tablet {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
+    }
+    @include tablet {
+      font-size: 1.8rem;
     }
   }
 }
