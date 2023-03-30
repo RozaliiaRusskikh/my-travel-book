@@ -6,16 +6,18 @@
   padding: 0 1rem;
   font-size: 0.9rem;
 
-  @include tablet{
-    padding: 1rem 3rem;
+  @include tablet {
+    padding: 0 3rem;
     font-size: 1.1rem;
   }
 
   &__main-nav {
+    padding-bottom: 1rem;
     @include tablet {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      padding-bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 
@@ -29,7 +31,7 @@
     width: 6rem;
 
     @include tablet {
-        width: 8rem;
+      width: 8rem;
     }
   }
 
@@ -41,13 +43,16 @@
   }
 
   &__main-nav-item {
-    padding: 0.5rem;
-    border-right: 1px solid $travelbook-blue;
+    padding: 0 0.5rem;
+    border-right: 2px solid $travelbook-blue;
+
+    @include tablet {
+      padding: 0 0.9rem;
+    }
   }
 
   &__main-nav-link {
     font-weight: 700;
-   
 
     &--active {
       color: $travelbook-orange;
@@ -56,5 +61,5 @@
 }
 
 li:last-child {
-   border-right: 1px solid $travelbook-white;
+  border-right: 1px solid $travelbook-white;
 }

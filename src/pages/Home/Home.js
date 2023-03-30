@@ -1,10 +1,11 @@
 import "./Home.scss";
+import Hero from "../../components/Hero/Hero";
 
 function Home() {
   document.title = "My Travel Book";
   return (
     <section>
-      <h1>Home page</h1>
+      <Hero />
     </section>
   );
 }

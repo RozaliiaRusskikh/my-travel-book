@@ -1,0 +1,25 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.button {
+  padding: 0.6rem;
+  background-color: $travelbook-orange;
+  color: $travelbook-white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  border: 1px solid $travelbook-orange;
+
+  @include tablet {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  &:hover {
+    background-color: $travelbook-white;
+    color: $travelbook-orange;
+  }
+}
