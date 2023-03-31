@@ -32,14 +32,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     @include tablet {
-    justify-content: flex-start;
+      justify-content: flex-start;
+      width: 38%;
+    }
+
+    @include desktop {
+      width: 25%;
     }
   }
 
   &__logo {
     width: 6rem;
+    transform: rotate(-5deg);
+    
 
     @include tablet {
       width: 8rem;
@@ -48,9 +56,12 @@
 
   &__logo-text {
     display: none;
-    width: 50%;
+    bottom: 1.7rem;
+    left: 7.2rem;
+    z-index: 1;
 
     @include tablet {
+      position: absolute;
       display: inline;
       color: $travelbook-blue-dark;
       font-style: italic;
