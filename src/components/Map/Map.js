@@ -11,6 +11,7 @@ import {
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const geoUrl =
   "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
@@ -70,13 +71,15 @@ function Map() {
                 ))
               }
             </Geographies>
-            {markers.map(({ name, long, lat }) => (
+            {markers.map(({ name, long, lat, id }) => (
               <Marker key={name} coordinates={[long, lat]}>
-                <circle
-                  className="map-section__circle"
-                  r={6}
-                  strokeWidth={1.5}
-                />
+                <Link to={`/travel-notes/${id}`}>
+                  <circle
+                    className="map-section__circle"
+                    r={6}
+                    strokeWidth={1.5}
+                  />
+                </Link>
                 <text
                   className="map-section__text"
                   textAnchor="end"
