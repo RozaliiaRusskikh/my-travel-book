@@ -1,6 +1,6 @@
 import "./Map.scss";
 import map from "../../assets/images/travel-map.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -10,55 +10,31 @@ import {
 } from "react-simple-maps";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-
-const markers = [
-  {
-    name: "Amman",
-    coordinates: [35.9336, 31.9632],
-  },
-  {
-    name: "Tbilisi",
-    coordinates: [44.793, 41.7151],
-  },
-  {
-    name: "Cancun",
-    coordinates: [-86.8475, 21.1619],
-  },
-  {
-    name: "Rome",
-    coordinates: [12.4964, 41.9028],
-  },
-  {
-    name: "Minsk",
-    coordinates: [27.5615, 53.9045],
-  },
-  {
-    name: "Saint Petersburg",
-    coordinates: [30.3351, 59.9343],
-  },
-  {
-    name: "Kazan",
-    coordinates: [49.1221, 55.7878],
-  },
-  {
-    name: "Vancouver",
-    coordinates: [-123.1207, 49.2827],
-  },
-  {
-    name: "Calgary",
-    coordinates: [-114.0719, 51.0447],
-  },
-  {
-    name: "Toronto",
-    coordinates: [-79.3832, 43.6532],
-  },
-];
+import axios from "axios";
 
 const geoUrl =
   "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 
 function Map() {
   const [tooltip, setTooltip] = useState("");
+  const [markers, setMarkers] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/posts")
+      .then((response) => {
+        setMarkers(response.data);
+      })
+      .catch((error) => {
+        console.error(
+          "We are having a problem accessing the posts API: " + error
+        );
+      });
+  }, []);
+
+  if (!markers) {
+    return <h3 className="loading">Loading...</h3>;
+  }
 
   return (
     <section className="map-section">
@@ -94,13 +70,17 @@ function Map() {
                 ))
               }
             </Geographies>
-            {markers.map(({ name, coordinates }) => (
-              <Marker key={name} coordinates={coordinates}>
-                <circle className="map-section__circle" r={5} strokeWidth={1.5} />
+            {markers.map(({ name, long, lat }) => (
+              <Marker key={name} coordinates={[long, lat]}>
+                <circle
+                  className="map-section__circle"
+                  r={6}
+                  strokeWidth={1.5}
+                />
                 <text
                   className="map-section__text"
                   textAnchor="end"
-                  y={-10}
+                  y={-12}
                   alignmentBaseline="middle"
                 >
                   {name}
