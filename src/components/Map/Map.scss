@@ -14,7 +14,7 @@
   &__title {
     color: $travelbook-blue;
     font-size: 1rem;
-    border-style:double;
+    border-style: double;
     border-color: $travelbook-blue-dark;
     padding: 0.5rem;
 
@@ -46,8 +46,39 @@
   }
 
   &__map-container {
+    width: 100vw;
+    color: $travelbook-blue-dark;
+    margin-top: 1.5rem;
+    background-color: $travelbook-white;
+
     @include tablet {
-      width: 87.5rem;
+      width: 95vw;
+      border-style: double;
     }
+
+    @include desktop {
+      width: 90vw;
+    }
+  }
+  &__geography {
+    fill: $travelbook-background;
+    stroke: #d6d6da;
+    outline: none;
+
+    &:hover {
+      fill: $travelbook-orange;
+      outline: none;
+    }
+  }
+
+  &__circle {
+    fill: $travelbook-blue;
+    stroke: $travelbook-orange;
+  }
+
+  &__text {
+    font-weight: 600;
+    fill: $travelbook-blue-dark;
+    font-size: 0.7rem;
   }
 }
