@@ -52,5 +52,10 @@
       width: 3rem;
       left: 2rem;
     }
+
+    &:hover {
+      background-color: $travelbook-blue;
+      transition: background-color 0.2s linear;
+    }
   }
 }
