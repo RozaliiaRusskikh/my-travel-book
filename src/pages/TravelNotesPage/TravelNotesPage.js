@@ -1,9 +1,11 @@
 import "./TravelNotesPage.scss";
+import NotesHero from "../../components/NotesHero/NotesHero";
+import notesHero from "../../assets/images/memory5.jpg";
 
 function TravelNotesPage() {
   return (
-    <section>
-      <h1>TravelNotesPage</h1>
+    <section className="notes">
+      <NotesHero image={notesHero} text="My Wander Memories" />
     </section>
   );
 }
