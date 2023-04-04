@@ -24,9 +24,9 @@ function TravelNotesPage() {
       <NotesHero image={notesHero} text="My Wander Memories" />
       <div className="notes__intro-container">
         <p className="notes__intro">
-          Welcome to my Travel Notes page! Here, you'll find a collection of my
-          favourite adventures and experiences from all around the world. I am
-          thrilled to share my stories with you.
+          Welcome to my <strong>Travel Notes page</strong>! Here, you'll find a
+          collection of my favourite adventures and experiences from all around
+          the world. I am thrilled to share my stories with you.
         </p>
         <p className="notes__intro">
           Through my travel posts, I hope to inspire you to explore new
