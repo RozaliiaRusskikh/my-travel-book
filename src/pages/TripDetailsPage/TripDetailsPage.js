@@ -8,7 +8,6 @@ function TripDetailsPage() {
   const [post, setPost] = useState(null);
   const baseURL = "http://localhost:8080";
   const { postId } = useParams();
-  console.log(postId);
 
   useEffect(() => {
     getData(`${baseURL}/posts/${postId}`, setPost);
@@ -18,11 +17,14 @@ function TripDetailsPage() {
     return <h3 className="loading">Loading...</h3>;
   }
 
-  document.title = post.title;
+  document.title = post.name;
 
   return (
     <section className="trip-section">
-      <NotesHero image={post.image_path} text={post.title} />
+      <NotesHero
+        image={post.image_path}
+        text={post.country + " " + post.year}
+      />
     </section>
   );
 }
