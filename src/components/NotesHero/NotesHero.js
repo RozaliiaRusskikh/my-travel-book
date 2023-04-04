@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function NotesHero({ image, text, isBackShown }) {
   const navigate = useNavigate();
+  
   const handleIconClick = () => {
     navigate("/travel-notes");
   };
