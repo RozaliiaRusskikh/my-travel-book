@@ -36,7 +36,7 @@ function TripDetailsPage() {
       <p className="trip-section__trip-description"> {post.description}</p>
       {attractions && (
         <h2 className="trip-section__attraction-heading">
-          Tourist Attractions
+          Tourist Attractions:
         </h2>
       )}
       {attractions &&
