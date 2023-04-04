@@ -17,6 +17,7 @@
     border-style: double;
     border-color: $travelbook-blue-dark;
     padding: 0.5rem;
+    text-shadow: 1px 1px $travelbook-blue-dark;
 
     @include tablet {
       margin-right: 1rem;
