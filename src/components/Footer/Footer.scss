@@ -8,4 +8,15 @@
   text-align: center;
   bottom: 0;
   width: 100%;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: $travelbook-blue-dark;
+
+  @include tablet {
+    font-size: 1rem;
+  }
+
+  @include desktop {
+    font-size: 1.1rem;
+  }
 }

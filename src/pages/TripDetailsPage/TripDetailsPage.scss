@@ -3,4 +3,17 @@
 @use "../../styles/partials/mixins" as *;
 
 .trip-section {
+    background-color: $travelbook-background;
+
+    &__title {
+
+    }
+
+    &__trip-description {
+
+    }
+
+    &__attraction-heading {
+        
+    }
 }

@@ -1,6 +1,6 @@
 import "./NotesHero.scss";
 
-function Hero({ image, text }) {
+function NotesHero({ image, text }) {
   return (
     <section className="notes-hero">
       <img className="notes-hero__image" src={image} alt="hero" />
@@ -9,4 +9,4 @@ function Hero({ image, text }) {
   );
 }
 
-export default Hero;
+export default NotesHero;
