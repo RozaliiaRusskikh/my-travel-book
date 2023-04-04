@@ -40,10 +40,10 @@ function TripDetailsPage() {
         </h2>
       )}
       {attractions &&
-        attractions.map((attraction) => {
+        attractions.map((attraction, index) => {
           return (
             <li key={attraction.id}>
-              <Attraction attraction={attraction} />
+              <Attraction attraction={attraction} index={index} />
             </li>
           );
         })}
