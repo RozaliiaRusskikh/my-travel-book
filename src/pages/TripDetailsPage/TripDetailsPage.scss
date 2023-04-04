@@ -10,6 +10,8 @@
     padding: 1rem;
     text-align: center;
     font-size: 1.3rem;
+    color: $travelbook-blue;
+    text-shadow: 1px 1px $travelbook-blue-dark;
 
     @include tablet {
       font-size: 1.5rem;
@@ -43,6 +45,8 @@
     font-size: 1.1rem;
     margin: 1rem;
     text-decoration: underline;
+    color: $travelbook-blue;
+
 
     @include tablet {
       font-size: 1.3rem;
