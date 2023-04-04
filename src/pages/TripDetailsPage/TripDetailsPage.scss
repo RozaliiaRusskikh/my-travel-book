@@ -3,17 +3,17 @@
 @use "../../styles/partials/mixins" as *;
 
 .trip-section {
-    background-color: $travelbook-background;
+  background-color: $travelbook-background;
 
-    &__title {
+  &__title {
+    font-style: italic;
+    padding: 1rem;
+    text-align: center;
+  }
 
-    }
+  &__trip-description {
+  }
 
-    &__trip-description {
-
-    }
-
-    &__attraction-heading {
-        
-    }
+  &__attraction-heading {
+  }
 }

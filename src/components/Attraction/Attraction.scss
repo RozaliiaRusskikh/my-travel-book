@@ -3,5 +3,13 @@
 @use "../../styles/partials/mixins" as *;
 
 .attration-section {
-    
+  &__heading {
+  }
+
+  &__description {
+  }
+
+  &__image {
+    width: 20%;
+  }
 }

@@ -19,7 +19,7 @@ function TripDetailsPage() {
     getData(`${baseURL}/posts/${postId}/attractions`, setAttractions);
   }, [postId]);
 
-  if (!post || !attractions) {
+  if (!post) {
     return <h3 className="loading">Loading...</h3>;
   }
 
@@ -30,17 +30,23 @@ function TripDetailsPage() {
       <NotesHero
         image={post.image_path}
         text={post.country + " " + post.year}
+        isBackShown={true}
       />
       <h1 className="trip-section__title">{post.title}</h1>
       <p className="trip-section__trip-description"> {post.description}</p>
-      <h2 className="trip-section__attraction-heading">Tourist Attractions</h2>
-      {attractions.map((attraction) => {
-        return (
-          <li key={attraction.id}>
-            <Attraction attraction={attraction} />
-          </li>
-        );
-      })}
+      {attractions && (
+        <h2 className="trip-section__attraction-heading">
+          Tourist Attractions
+        </h2>
+      )}
+      {attractions &&
+        attractions.map((attraction) => {
+          return (
+            <li key={attraction.id}>
+              <Attraction attraction={attraction} />
+            </li>
+          );
+        })}
     </section>
   );
 }

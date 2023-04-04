@@ -21,7 +21,11 @@ function TravelNotesPage() {
 
   return (
     <section className="notes">
-      <NotesHero image={notesHero} text="My Wander Memories" />
+      <NotesHero
+        image={notesHero}
+        text="My Wander Memories"
+        isBackShown={false}
+      />
       <div className="notes__intro-container">
         <p className="notes__intro">
           Welcome to my <strong>Travel Notes page</strong>! Here, you'll find a

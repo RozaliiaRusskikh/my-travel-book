@@ -9,11 +9,13 @@
   height: 14rem;
   position: relative;
   margin-bottom: 1.5rem;
+  padding: 0 1rem;
 
   @include tablet {
     font-size: 1.2rem;
     width: 12rem;
     margin-right: 1.5rem;
+    padding: 0;
   }
 
   @include desktop {
@@ -35,7 +37,7 @@
     position: relative;
     object-fit: cover;
     filter: grayscale(100%);
-    transition: filter 0.2s ease-in;
+    transition: filter 0.3s linear;
 
     @include tablet {
       width: 12rem;
@@ -48,7 +50,7 @@
 
     &:hover {
       filter: grayscale(0%);
-      transition: filter 0.2s linear;
+      transition: filter 0.3s linear;
     }
   }
 
