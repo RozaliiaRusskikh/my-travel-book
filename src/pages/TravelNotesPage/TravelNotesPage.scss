@@ -3,5 +3,39 @@
 @use "../../styles/partials/mixins" as *;
 
 .notes {
-    
+  &__intro-container {
+    background-image: url("../../assets/images/plane.png");
+    background-position: 99.4%;
+    background-repeat: no-repeat;
+    position: relative;
+    margin: -1.5rem 1rem;
+    padding: 0.3rem 1rem;
+    z-index: 1;
+    font-size: 0.9rem;
+    background-color: $travelbook-white;
+    border-style: groove;
+    border-color: $travelbook-background;
+
+    @include tablet {
+      margin: -3.5rem 3rem;
+    }
+  }
+
+  &__intro {
+    margin: 0.5rem 1rem;
+    font-size: 0.9rem;
+
+    @include tablet {
+      font-size: 1.2rem;
+    }
+
+    @include desktop {
+      font-size: 1.2rem;
+      margin: 1rem 2.2rem;
+    }
+  }
+
+  &__cards {
+    width: 100%;
+  }
 }

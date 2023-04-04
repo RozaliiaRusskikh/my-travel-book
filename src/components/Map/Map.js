@@ -1,5 +1,6 @@
 import "./Map.scss";
 import map from "../../assets/images/travel-map.png";
+import { getData } from "../../utils/api-utils";
 import { useState, useEffect } from "react";
 import {
   ComposableMap,
@@ -10,7 +11,6 @@ import {
 } from "react-simple-maps";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 const geoUrl =
@@ -19,19 +19,11 @@ const geoUrl =
 function Map() {
   const [tooltip, setTooltip] = useState("");
   const [markers, setMarkers] = useState(null);
+  const baseURL = "http://localhost:8080";
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/posts")
-      .then((response) => {
-        setMarkers(response.data);
-      })
-      .catch((error) => {
-        console.error(
-          "We are having a problem accessing the posts API: " + error
-        );
-      });
-  }, []);
+    getData(`${baseURL}/posts`, setMarkers);
+  }, [baseURL]);
 
   if (!markers) {
     return <h3 className="loading">Loading...</h3>;

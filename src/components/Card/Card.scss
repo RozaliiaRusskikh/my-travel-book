@@ -1,0 +1,50 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.post-card {
+  font-size: 1rem;
+  width: 12rem;
+  height: 16.5rem;
+  position: relative;
+
+  &:hover {
+    opacity: 0.8;
+
+    @include tablet {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__image {
+    width: 12rem;
+    height: 12.5rem;
+    border-radius: 8px;
+    position: relative;
+    object-fit: cover;
+  }
+
+  &__container {
+    position: absolute;
+    bottom: 4rem;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: 100%;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.4rem 1rem;
+  }
+
+  &__year {
+    color: $travelbook-white;
+  }
+
+  &__name {
+    margin: 0;
+    font-weight: 600;
+    color: $travelbook-white;
+    margin-left: 0.5rem;
+  }
+}
