@@ -34,11 +34,6 @@ input {
   border-radius: 4px;
   padding: 0.4rem;
 
-  @include tablet {
-    font-weight: 100;
-    padding: 1rem;
-  }
-
   &::placeholder {
     color: $travelbook-black;
     font-size: 0.6rem;
@@ -48,7 +43,7 @@ input {
     }
 
     @include desktop{
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
   }
 }

@@ -72,19 +72,21 @@ function FindCountryForm({ getFacts }) {
         <label className="find-country-form__label" htmlFor="countryRequest">
           What country would you like to visit?
         </label>
-        <input
-          className={
-            message === "error"
-              ? "find-country-form__input find-country-form__input--error"
-              : "find-country-form__input"
-          }
-          name="countryRequest"
-          id="countryRequest"
-          placeholder="Enter a country name..."
-          onChange={handleChangeInput}
-          value={countryRequest}
-        />
-        <Button text="Find" />
+        <div className="find-country-form__input-button">
+          <input
+            className={
+              message === "error"
+                ? "find-country-form__input find-country-form__input--error"
+                : "find-country-form__input"
+            }
+            name="countryRequest"
+            id="countryRequest"
+            placeholder="Enter a country name..."
+            onChange={handleChangeInput}
+            value={countryRequest}
+          />
+          <Button text="Find" />
+        </div>
         {message && <Message message={message} />}
       </form>
     </section>

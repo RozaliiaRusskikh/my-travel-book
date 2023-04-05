@@ -1,6 +1,7 @@
 import "./CountryFactsPage.scss";
-import FindCountryForm from "../../components/FindCountryForm/FindCountryForm";
 import { useState } from "react";
+import FindCountryForm from "../../components/FindCountryForm/FindCountryForm";
+import CountryFact from "../../components/CountryFact/CountryFact";
 
 function CountryFactsPage() {
   const [countryFacts, setCountryFacts] = useState(null);
@@ -16,7 +17,7 @@ function CountryFactsPage() {
       {countryFacts && (
         <section className="country-facts-section__quick-facts-section">
           <h1 className="country-facts-section__title">Quick Facts</h1>
-          
+          <CountryFact countryFacts={countryFacts} />
         </section>
       )}
     </section>
