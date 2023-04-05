@@ -39,12 +39,17 @@
   &__input {
     width: 60%;
     margin-right: 0.5rem;
+    background-image: url("../../assets/icons/search.svg");
+    background-position: 97%;
+    background-repeat: no-repeat;
+    position: relative;
+
     &--error {
       border: 2px solid $error;
     }
 
     @include tablet {
-      width: 70%;
+      width: 68%;
     }
 
     @include desktop {

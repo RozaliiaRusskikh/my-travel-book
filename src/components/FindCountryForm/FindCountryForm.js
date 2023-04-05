@@ -40,9 +40,13 @@ function FindCountryForm({ getFacts }) {
         .get(`${countriesAPI}/${countryRequest}`)
         .then((response) => {
           if (response.status === 200) {
-            getFacts(response.data);
-            setFlashMessage("submitted");
-            setCountryRequest("");
+            if (response.data[0].name.common === countryRequest) {
+              getFacts(response.data);
+              setFlashMessage("submitted");
+              setCountryRequest("");
+            } else {
+              setFlashMessage("error");
+            }
           }
         })
         .catch((error) => {

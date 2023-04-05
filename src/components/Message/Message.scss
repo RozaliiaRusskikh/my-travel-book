@@ -5,7 +5,6 @@
 .app-message {
   margin: 0 auto;
   text-align: center;
-  //background-color: rgba(240, 250, 240, 0.35);
   font-size: 0.7rem;
   margin: 0.6rem;
   padding: 0.5rem;
@@ -14,6 +13,10 @@
 
   @include tablet {
     font-size: 1rem;
+  }
+
+  @include desktop {
+    font-size: 1.2rem;
   }
 
   &--error {

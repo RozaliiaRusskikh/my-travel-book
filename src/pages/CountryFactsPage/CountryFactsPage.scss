@@ -3,7 +3,9 @@
 @use "../../styles/partials/mixins" as *;
 
 .country-facts-section {
-    
+  &__quick-facts-section {
+  }
+
   &__title {
     font-weight: 600;
     padding: 1rem;
