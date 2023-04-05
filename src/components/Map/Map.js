@@ -68,7 +68,7 @@ function Map() {
                 <Link to={`/travel-notes/${id}`}>
                   <circle
                     className="map-section__circle"
-                    r={6}
+                    r={7}
                     strokeWidth={1.5}
                   />
                 </Link>

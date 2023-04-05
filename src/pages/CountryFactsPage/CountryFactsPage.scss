@@ -3,6 +3,8 @@
 @use "../../styles/partials/mixins" as *;
 
 .country-facts-section {
+  background-color: #fafafa;
+
   &__quick-facts-section {
     display: flex;
     flex-direction: column;
