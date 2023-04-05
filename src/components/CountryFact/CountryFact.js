@@ -1,13 +1,17 @@
 import "./CountryFact.scss";
-import placeholder from "../../assets/icons/search.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function CountryFact({ countryFacts }) {
+function CountryFact({ label, content, icon }) {
   return (
-    <atricle className="country-fact">
-      <img className="country-fact_icon" alt="icon" src={placeholder} />
-      <p className="country-fact__label">Language</p>
-      <p className="country-fact__content">Japanese</p>
-    </atricle>
+    <div className="country-fact">
+      <FontAwesomeIcon
+        className="country-fact__icon"
+        icon={icon}
+        color={"#ff8a65"}
+      />
+      <p className="country-fact__label">{label}</p>
+      <p className="country-fact__content">{content}</p>
+    </div>
   );
 }
 

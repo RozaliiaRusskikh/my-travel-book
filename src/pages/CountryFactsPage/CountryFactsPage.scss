@@ -4,6 +4,10 @@
 
 .country-facts-section {
   &__quick-facts-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   &__title {
@@ -22,5 +26,21 @@
       font-size: 2rem;
       padding: 3rem;
     }
+  }
+
+  &__table {
+    display: flex;
+  }
+
+  &__left {
+  }
+
+  &__right {
+  }
+
+  &__map {
+    cursor: pointer;
+    color: $travelbook-blue;
+    font-weight: 600;
   }
 }
