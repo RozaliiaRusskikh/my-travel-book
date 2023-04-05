@@ -6,41 +6,56 @@
   &__quick-facts-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+    @include desktop {
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__title {
     font-weight: 600;
-    padding: 1rem;
+    padding-top: 1rem;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: $travelbook-blue;
     text-shadow: 1px 1px $travelbook-blue-dark;
 
     @include tablet {
-      font-size: 1.5rem;
+      font-size: 1.7rem;
     }
 
     @include desktop {
       font-size: 2rem;
-      padding: 3rem;
+      padding-top: 3rem;
     }
   }
 
   &__table {
-    display: flex;
-  }
-
-  &__left {
-  }
-
-  &__right {
+    @include tablet {
+      display: flex;
+      padding: 1rem;
+      justify-content: center;
+    }
   }
 
   &__map {
     cursor: pointer;
+    text-decoration: underline;
     color: $travelbook-blue;
     font-weight: 600;
+    margin-bottom: 1rem;
+    align-self: center;
+
+    @include desktop {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__left {
+    @include desktop {
+      margin-right: 6rem;
+    }
   }
 }

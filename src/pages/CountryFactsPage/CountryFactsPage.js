@@ -40,6 +40,7 @@ function CountryFactsPage() {
                   countryFacts.currencies[
                     Object.keys(countryFacts.currencies)[0]
                   ].name,
+                  ", ",
                   countryFacts.currencies[
                     Object.keys(countryFacts.currencies)[0]
                   ].symbol,
