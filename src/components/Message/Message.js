@@ -2,8 +2,8 @@ import "./Message.scss";
 
 function Message({ message }) {
   const messages = {
-    submitted: "Form has been submitted",
-    error: "Failed to submit the form",
+    submitted: "Success! Below, you'll find some facts about the country",
+    error: "Request failed. Please provide a valid country name"
   };
   return (
     <div className="app-message">

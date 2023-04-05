@@ -12,6 +12,7 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   border: 1px solid $travelbook-orange;
+  max-width: 12rem;
 
   @include tablet {
     font-size: 1rem;

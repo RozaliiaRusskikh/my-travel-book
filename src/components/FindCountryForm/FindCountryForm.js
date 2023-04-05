@@ -1,11 +1,13 @@
 import "./FindCountryForm.scss";
+import { useState } from "react";
+import axios from "axios";
 import Message from "../Message/Message";
 import Button from "../Button/Button";
-import { useState } from "react";
 
-function FindCountryForm() {
+function FindCountryForm({ getFacts }) {
   const [countryRequest, setCountryRequest] = useState("");
   const [message, setMessage] = useState(null);
+  const countriesAPI = "https://restcountries.com/v3.1/name";
 
   const handleChangeInput = (event) => {
     setCountryRequest(event.target.value);
@@ -34,9 +36,21 @@ function FindCountryForm() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     if (isFormValid()) {
-      //make an axios request
-      setFlashMessage("submitted");
-      setCountryRequest("");
+      axios
+        .get(`${countriesAPI}/${countryRequest}`)
+        .then((response) => {
+          if (response.status === 200) {
+            getFacts(response.data);
+            setFlashMessage("submitted");
+            setCountryRequest("");
+          }
+        })
+        .catch((error) => {
+          setFlashMessage("error");
+          console.error(
+            "We are having a problem accessing the posts API: " + error
+          );
+        });
     } else {
       setFlashMessage("error");
     }
@@ -45,25 +59,31 @@ function FindCountryForm() {
     setMessage(message);
     setTimeout(() => {
       setMessage(null);
-    }, 2000);
+    }, 3000);
   }
 
   return (
-    <form onSubmit={handleFormSubmit} className="find-country-form">
-      {message && <Message message={message} />}
-      <label className="find-country-form__label" htmlFor="countryRequest">
-        Which country would you like to visit?
-      </label>
-      <input
-        className="find-country-form__input"
-        name="countryRequest"
-        id="countryRequest"
-        placeholder="Input a country name"
-        onChange={handleChangeInput}
-        value={countryRequest}
-      />
-      <Button text="Find" />
-    </form>
+    <section className="find-country-form">
+      <form onSubmit={handleFormSubmit} className="find-country-form__form">
+        <label className="find-country-form__label" htmlFor="countryRequest">
+          What country would you like to visit?
+        </label>
+        <input
+          className={
+            message === "error"
+              ? "find-country-form__input find-country-form__input--error"
+              : "find-country-form__input"
+          }
+          name="countryRequest"
+          id="countryRequest"
+          placeholder="Enter a country name..."
+          onChange={handleChangeInput}
+          value={countryRequest}
+        />
+        <Button text="Find" />
+        {message && <Message message={message} />}
+      </form>
+    </section>
   );
 }
 
