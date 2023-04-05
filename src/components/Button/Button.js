@@ -1,15 +1,8 @@
 import "./Button.scss";
-import { useNavigate } from "react-router-dom";
 
-function Button({ text }) {
-  const navigate = useNavigate();
-
-  const handleButtonClick = () => {
-    navigate("/country-facts");
-  };
-
+function Button({ text, onClick }) {
   return (
-    <button onClick={handleButtonClick} className="button">
+    <button onClick={onClick} className="button">
       {text}
     </button>
   );

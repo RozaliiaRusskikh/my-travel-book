@@ -1,0 +1,17 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.app-message {
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 0.3rem;
+
+  &--error {
+    color: $error;
+  }
+
+  &--submitted {
+    color: green;
+  }
+}
