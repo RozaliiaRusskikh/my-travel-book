@@ -64,5 +64,11 @@
   &__polaroid-cards {
     position: relative;
     text-align: center;
+
+    @include tablet {
+      display: flex;
+      align-items:center;
+      justify-content: center;
+    }
   }
 }
