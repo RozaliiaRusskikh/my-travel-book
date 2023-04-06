@@ -2,6 +2,10 @@ import "./CountryFactsPage.scss";
 import { useState } from "react";
 import FindCountryForm from "../../components/FindCountryForm/FindCountryForm";
 import CountryFact from "../../components/CountryFact/CountryFact";
+import PolaroidImageCard from "../../components/PolaroidImageCard/PolaroidImageCard";
+import donkey from "../../assets/images/donkey.jpg";
+import camels from "../../assets/images/camels.jpg";
+import kulSharif from "../../assets/images/kul-sharif.jpg";
 import {
   faLanguage,
   faMoneyBill,
@@ -81,6 +85,11 @@ function CountryFactsPage() {
           </a>
         </section>
       )}
+      {!countryFacts && <div className="country-facts-section__polaroid-cards">
+        <PolaroidImageCard image={donkey} title="Donkey in Petra" />
+        <PolaroidImageCard image={kulSharif} title="Kul Sharif Mosque in Kazan" />
+        <PolaroidImageCard image={camels} title="Camels in Jordan" />
+      </div>}
     </section>
   );
 }
