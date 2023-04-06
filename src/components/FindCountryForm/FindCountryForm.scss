@@ -73,7 +73,8 @@
     width: 100%;
 
     @include tablet {
-      width: 60%;
+      width: 55%;
+      padding: 2rem;
     }
 
     @include desktop {
