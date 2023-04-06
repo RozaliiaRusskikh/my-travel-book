@@ -8,16 +8,16 @@ import { getData } from "../../utils/api-utils";
 function TripDetailsPage() {
   const [post, setPost] = useState(null);
   const [attractions, setAttractions] = useState(null);
-  const baseURL = "http://localhost:8080";
+  const baseURL = process.env.REACT_APP_API_URL;
   const { postId } = useParams();
 
   useEffect(() => {
     getData(`${baseURL}/posts/${postId}`, setPost);
-  }, [postId]);
+  }, [baseURL, postId]);
 
   useEffect(() => {
     getData(`${baseURL}/posts/${postId}/attractions`, setAttractions);
-  }, [postId]);
+  }, [baseURL, postId]);
 
   if (!post) {
     return <h3 className="loading">Loading...</h3>;

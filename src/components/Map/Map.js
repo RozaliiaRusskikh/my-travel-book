@@ -19,7 +19,7 @@ const geoUrl =
 function Map() {
   const [tooltip, setTooltip] = useState("");
   const [markers, setMarkers] = useState(null);
-  const baseURL = "http://localhost:8080";
+  const baseURL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     getData(`${baseURL}/posts`, setMarkers);

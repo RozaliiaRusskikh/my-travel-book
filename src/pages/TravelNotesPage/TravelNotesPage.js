@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 function TravelNotesPage() {
   document.title = "My Travel Notes";
   const [posts, setPosts] = useState("");
-  const baseURL = "http://localhost:8080";
+  const baseURL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     getData(`${baseURL}/posts`, setPosts);
