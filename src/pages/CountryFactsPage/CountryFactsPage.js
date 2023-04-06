@@ -86,8 +86,8 @@ function CountryFactsPage() {
         </section>
       )}
       {!countryFacts && <div className="country-facts-section__polaroid-cards">
-        <PolaroidImageCard image={donkey} title="Donkey in Petra" />
-        <PolaroidImageCard image={kulSharif} title="Kul Sharif Mosque in Kazan" />
+        <PolaroidImageCard image={donkey} title="Donkey in Petra, Jordan" />
+        <PolaroidImageCard image={kulSharif} title="Kul Sharif Mosque in Kazan, Russia" />
         <PolaroidImageCard image={camels} title="Camels in Jordan" />
       </div>}
     </section>
