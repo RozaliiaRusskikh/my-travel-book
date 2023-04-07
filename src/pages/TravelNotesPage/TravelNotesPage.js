@@ -5,6 +5,7 @@ import notesHero from "../../assets/images/memory5.jpg";
 import { Link } from "react-router-dom";
 import { getData } from "../../utils/api-utils";
 import { useState, useEffect } from "react";
+import AddButton from "../../components/AddButton/AddButton";
 
 function TravelNotesPage() {
   document.title = "My Travel Notes";
@@ -47,6 +48,7 @@ function TravelNotesPage() {
           );
         })}
       </div>
+      <AddButton path={"/travel-notes/new"}/>
     </section>
   );
 }
