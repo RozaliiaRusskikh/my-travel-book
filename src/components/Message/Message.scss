@@ -28,6 +28,11 @@
     color: $travelbook-white;
   }
 
+  &--duplicate {
+    color: $error;
+  }
+
+
   &--notFound {
     color: $error;
   }

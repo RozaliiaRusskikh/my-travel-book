@@ -27,7 +27,8 @@
     }
 
     @include desktop {
-      font-size: 1.5rem;
+      font-size: 2rem;
+      padding: 1.5rem;
     }
   }
 
@@ -39,11 +40,24 @@
     @include tablet {
       padding: 1rem 0;
     }
+
+    @include desktop {
+      font-size: 1.3rem;
+    }
   }
 
   &__input-box {
     margin-bottom: 0.5rem;
     width: 100%;
+
+    @include desktop {
+      padding: 0.7rem;
+      font-size: 1.2rem;
+    }
+
+    &--invalid {
+      border-color: $error;
+    }
   }
 
   &__date-picker {
@@ -68,14 +82,18 @@
       justify-content: center;
     }
 
-    @include desktop{
-        justify-content: flex-end;
-      }
+    @include desktop {
+      justify-content: flex-end;
+    }
 
     & > :first-child {
       margin-right: 1rem;
       background-color: $travelbook-white;
       color: $travelbook-black;
+
+      &:hover {
+        background-color: $travelbook-orange;
+      }
     }
   }
 

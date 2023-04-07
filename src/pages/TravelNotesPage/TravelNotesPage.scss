@@ -6,13 +6,11 @@
   &__intro-container {
     background-image: url("../../assets/images/plane.png");
     background-size: 2rem;
-    background-position: 99.4%;
+    background-position: bottom;
     background-repeat: no-repeat;
-    background-size: cover;
     position: relative;
     margin: -1.5rem 1rem;
     padding: 0.3rem 1rem;
-    z-index: 1;
     font-size: 0.9rem;
     background-color: $alabaster;
     border-style: groove;
@@ -21,7 +19,7 @@
 
     @include tablet {
       margin: -3.5rem 3rem;
-      background-size: 3rem;
+      background-size: 2.5rem;
     }
 
     @include desktop {
@@ -30,18 +28,21 @@
   }
 
   &__intro {
-    margin: 0.5rem 1rem;
+    margin: 1rem;
     font-size: 0.9rem;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.9px;
     background-color: $alabaster;
+
+    &:nth-child(2) {
+      margin-bottom: 3rem;
+    }
 
     @include tablet {
       font-size: 1.1rem;
     }
 
     @include desktop {
-      font-size: 1.2rem;
-      margin: 1rem 2.2rem;
+      font-size: 1.4rem;
     }
   }
 

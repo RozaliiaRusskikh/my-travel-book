@@ -2,19 +2,20 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.app-message {
+.form-error {
   display: flex;
   justify-content: flex-start;
-  font-weight: 100;
+  font-weight: 600;
   color: $error;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
 
   @include tablet {
     font-size: 0.75rem;
   }
 }
 
-.app-message img {
+.form-error img {
   width: 1.1rem;
   margin-right: 0.3rem;
 }

@@ -5,14 +5,19 @@ import axios from "axios";
 import FormError from "../../components/FormError/FormError";
 import Button from "../../components/Button/Button";
 import Select from "react-select";
+import Message from "../../components/FormError/FormError";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function NoteForm() {
+function NoteAddForm() {
   const countriesAPI = "https://restcountries.com/v3.1/all";
+  const baseURL = process.env.REACT_APP_API_URL;
+
   const empty = "This field is required";
+  const invalidCoordinates = "Invalid coordinate";
 
   const [countryNames, setCountryNames] = useState([]);
+  const [message, setMessage] = useState(null);
 
   const [emptyPin, setEmptyLandPin] = useState(false);
   const [emptyDescription, setEmptyDescription] = useState(false);
@@ -22,6 +27,7 @@ function NoteForm() {
   const [emptyLat, setEmptyLat] = useState(false);
   const [emptyTitle, setEmptyTitle] = useState(false);
   const [emptyImage, setEmptyImage] = useState(false);
+  const [incorrectCoordinate, setIncorrectCoordinate] = useState(false);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -74,10 +80,6 @@ function NoteForm() {
     setImage(file);
   };
 
-  const handleCountryChange = (event) => {
-    setSelectedCountry(event.target.value);
-  };
-
   const handleLatChange = (event) => {
     setLat(event.target.value);
   };
@@ -86,15 +88,147 @@ function NoteForm() {
     setLong(event.target.value);
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
+  const handleCountryChange = (selectedOption) => {
+    setSelectedCountry(selectedOption);
   };
 
+  const isCoordinatesInvalid = () => {
+    if (
+      lat.match("/^[+-]?(([1-8]?[0-9])(.[0-9]{1,6})?|90(.0{1,6})?)$/") ||
+      long.match(
+        "/^[+-]?((([1-9]?[0-9]|1[0-7][0-9])(.[0-9]{1,6})?)|180(.0{1,6})?)$/"
+      )
+    ) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const isFieldEmpty = (input) => {
+    if (input.length === 0) {
+      return true;
+    }
+    return false;
+  };
+
+  const isFormValid = () => {
+    if (
+      !name ||
+      !description ||
+      !selectedYear ||
+      !selectedCountry ||
+      !image ||
+      !long ||
+      !lat ||
+      !title
+    ) {
+      return false;
+    }
+
+    if (isCoordinatesInvalid()) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    if (isFormValid()) {
+      axios
+        .post(`${baseURL}/posts`, {
+          name: name,
+          description: description,
+          year: selectedYear,
+          country: selectedCountry,
+          image_path: `${baseURL}/${image.name}`,
+          long: long,
+          lat: lat,
+          title: title,
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            //redirect to the Travel Notes page and display a flash message
+            goToTravelNotesPage();
+            setFlashMessage("submitted");
+          } else {
+            console.log(response.message);
+            setFlashMessage("duplicate");
+          }
+        })
+        .catch((error) => {
+          setFlashMessage("error");
+          console.error("We are having a problem accessing the API: " + error);
+        });
+    } else {
+      console.log(`${baseURL}/${image.name}`);
+      if (isFieldEmpty(name)) {
+        setEmptyLandPin(true);
+      } else {
+        setEmptyLandPin(false);
+      }
+      if (isFieldEmpty(description)) {
+        setEmptyDescription(true);
+      } else {
+        setEmptyDescription(false);
+      }
+      if (isFieldEmpty(selectedYear)) {
+        setEmptyYear(true);
+      } else {
+        setEmptyYear(false);
+      }
+      if (isFieldEmpty(selectedCountry)) {
+        setEmptyCountry(true);
+      } else {
+        setEmptyCountry(false);
+      }
+      if (isFieldEmpty(image)) {
+        setEmptyImage(true);
+      } else {
+        setEmptyImage(false);
+      }
+      if (isFieldEmpty(long)) {
+        setEmptyLong(true);
+      } else {
+        setEmptyLong(false);
+      }
+      if (isFieldEmpty(lat)) {
+        setEmptyLat(true);
+      } else {
+        setEmptyLat(false);
+      }
+      if (isFieldEmpty(title)) {
+        setEmptyTitle(true);
+      } else {
+        setEmptyTitle(false);
+      }
+      if (isCoordinatesInvalid()) {
+        setIncorrectCoordinate(true);
+      } else {
+        setIncorrectCoordinate(false);
+      }
+    }
+  };
+
+  function setFlashMessage(message) {
+    setMessage(message);
+    setTimeout(() => {
+      setMessage(null);
+    }, 3000);
+  }
+
   return (
-    <form onSubmit={handleFormSubmit} className="note-form">
+    <form
+      onSubmit={handleFormSubmit}
+      className="note-form"
+      encType="multipart/form-data"
+    >
       <h2 className="note-form__title">
         Please enter information about your trip to create your travel note
       </h2>
+      {message && <Message message={message} />}
       <div className="note-form__table">
         <div className="note-form__left">
           <label className="note-form__label" htmlFor="name">
@@ -102,7 +236,7 @@ function NoteForm() {
           </label>
           <input
             className={`note-form__input-box ${
-              emptyPin ? "form__input--invalid" : ""
+              emptyPin ? "note-form__input-box--invalid" : ""
             }`}
             id="name"
             type="text"
@@ -116,7 +250,7 @@ function NoteForm() {
           </label>
           <input
             className={`note-form__input-box ${
-              emptyLong ? "form__input--invalid" : ""
+              emptyLong ? "note-form__input-box--invalid" : ""
             }`}
             id="long"
             type="number"
@@ -124,13 +258,14 @@ function NoteForm() {
             value={long}
             onChange={handleLongChange}
           ></input>
+          {incorrectCoordinate && <FormError message={invalidCoordinates} />}
           {emptyLong && <FormError message={empty} />}
           <label className="note-form__label" htmlFor="lat">
             Latitude:
           </label>
           <input
             className={`note-form__input-box ${
-              emptyLat ? "form__input--invalid" : ""
+              emptyLat ? "note-form__input-box--invalid" : ""
             }`}
             id="lat"
             type="number"
@@ -138,6 +273,7 @@ function NoteForm() {
             value={lat}
             onChange={handleLatChange}
           ></input>
+          {incorrectCoordinate && <FormError message={invalidCoordinates} />}
           {emptyLat && <FormError message={empty} />}
           <label className="note-form__label" htmlFor="country">
             Country:
@@ -159,7 +295,7 @@ function NoteForm() {
           </label>
           <input
             className={`note-form__input-box ${
-              emptyTitle ? "form__input--invalid" : ""
+              emptyTitle ? "note-form__input-box--invalid" : ""
             }`}
             id="title"
             type="text"
@@ -175,7 +311,7 @@ function NoteForm() {
             rows="5"
             id="description"
             className={`note-form__input-box ${
-              emptyDescription ? "form__input--invalid" : ""
+              emptyDescription ? "note-form__input-box--invalid" : ""
             }`}
             type="text"
             name="description"
@@ -191,7 +327,6 @@ function NoteForm() {
             className="note-form__date-picker"
             selected={selectedYear ? new Date(selectedYear, 0, 1) : null}
             onChange={(date) => setSelectedYear(date.getFullYear())}
-            isClearable
             dateFormat="yyyy"
             placeholderText="Select year..."
             showYearPicker
@@ -201,6 +336,7 @@ function NoteForm() {
             Image:
           </label>
           <input
+            name="image"
             id="image"
             type="file"
             onChange={handleImageUpload}
@@ -217,4 +353,4 @@ function NoteForm() {
   );
 }
 
-export default NoteForm;
+export default NoteAddForm;
