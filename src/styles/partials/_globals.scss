@@ -37,7 +37,6 @@ input {
   resize: none;
 
   &::placeholder {
-    color: $travelbook-black;
     font-size: 0.7rem;
 
     @include tablet {

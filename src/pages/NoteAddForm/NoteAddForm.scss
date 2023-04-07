@@ -3,19 +3,109 @@
 @use "../../styles/partials/mixins" as *;
 
 .note-form {
+  padding: 1rem;
+
+  @include tablet {
+    padding: 1.5rem;
+  }
+
+  @include desktop {
+    padding: 3rem;
+  }
+
   &__title {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-weight: 100;
+    font-style: italic;
+
+    @include tablet {
+      font-size: 1.3rem;
+      padding: 1rem;
+    }
+
+    @include desktop {
+      font-size: 1.5rem;
+    }
   }
 
   &__label {
+    display: block;
+    padding: 0.5rem 0;
+    font-weight: 600;
+
+    @include tablet {
+      padding: 1rem 0;
+    }
   }
 
   &__input-box {
-  }
-
-  &__select {
-    width: 20rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
   }
 
   &__date-picker {
+    width: 100%;
+
+    &::placeholder {
+      font-size: 1rem;
+      padding: 2px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+
+    @include tablet {
+      justify-content: center;
+    }
+
+    @include desktop{
+        justify-content: flex-end;
+      }
+
+    & > :first-child {
+      margin-right: 1rem;
+      background-color: $travelbook-white;
+      color: $travelbook-black;
+    }
+  }
+
+  &__table {
+    @include tablet {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    @include desktop {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__left {
+    @include tablet {
+      width: 40%;
+    }
+    @include desktop {
+      width: 35%;
+    }
+  }
+
+  &__right {
+    @include tablet {
+      width: 40%;
+    }
+
+    @include desktop {
+      width: 55%;
+    }
   }
 }
