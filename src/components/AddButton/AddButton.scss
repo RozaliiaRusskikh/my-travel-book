@@ -4,20 +4,24 @@
 
 .add-button {
   width: 3rem;
-  display: block;
-  margin: 2rem 1rem;
+  margin: 3rem;
   margin-left: auto;
 
-  &:hover {
-    opacity: 0.8;
-  }
+  &__icon {
+    width: 3rem;
+    display: block;
 
-  @include tablet {
-    margin-right: 3rem;
-  }
+    &:hover {
+      opacity: 0.8;
+    }
 
-  @include tablet {
-    width: 4rem;
-    margin-right: 4rem;
+    @include tablet {
+      margin-right: 3rem;
+    }
+
+    @include tablet {
+      width: 4rem;
+      margin-right: 4rem;
+    }
   }
 }

@@ -1,0 +1,20 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.app-message {
+  display: flex;
+  justify-content: flex-start;
+  font-weight: 100;
+  color: $error;
+  font-size: 0.7rem;
+
+  @include tablet {
+    font-size: 0.75rem;
+  }
+}
+
+.app-message img {
+  width: 1.1rem;
+  margin-right: 0.3rem;
+}

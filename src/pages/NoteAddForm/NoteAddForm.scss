@@ -1,0 +1,21 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.note-form {
+  &__title {
+  }
+
+  &__label {
+  }
+
+  &__input-box {
+  }
+
+  &__select {
+    width: 20rem;
+  }
+
+  &__date-picker {
+  }
+}
