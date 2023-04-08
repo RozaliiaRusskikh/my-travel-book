@@ -1,5 +1,6 @@
 import "./TravelNotesPage.scss";
 import NotesHero from "../../components/NotesHero/NotesHero";
+import Message from "../../components/Message/Message";
 import Card from "../../components/Card/Card";
 import notesHero from "../../assets/images/memory5.jpg";
 import { Link } from "react-router-dom";
@@ -8,22 +9,44 @@ import { useState, useEffect } from "react";
 import AddButton from "../../components/AddButton/AddButton";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/pencil.svg";
+import axios from "axios";
 
 function TravelNotesPage() {
   document.title = "My Travel Notes";
   const [posts, setPosts] = useState("");
+  const [message, setMessage] = useState(null);
   const baseURL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     getData(`${baseURL}/posts`, setPosts);
-  }, [baseURL]);
+  }, [posts, baseURL]);
 
   if (!posts) {
     return <h3 className="loading">Loading...</h3>;
   }
 
-  function handleDelete() {
-    console.log("Delete");
+  function setFlashMessage(message) {
+    setMessage(message);
+    setTimeout(() => {
+      setMessage(null);
+    }, 3000);
+  }
+
+  function deletePost(id) {
+    if (window.confirm("Delete this post?")) {
+      axios
+        .delete(`${baseURL}/posts/${id}`)
+        .then((response) => {
+          if (response.status === 204) {
+            setFlashMessage("deleted");
+          }
+        })
+        .catch((error) => {
+          console.error(
+            "We are having a problem accessing the posts API: " + error
+          );
+        });
+    }
   }
 
   return (
@@ -61,7 +84,9 @@ function TravelNotesPage() {
                   />
                 </Link>
                 <img
-                  onClick={handleDelete}
+                  onClick={() => {
+                    deletePost(post.id);
+                  }}
                   className="notes__delete-icon"
                   src={deleteIcon}
                   alt="delete icon"
@@ -71,6 +96,7 @@ function TravelNotesPage() {
           );
         })}
       </div>
+      {message && <Message message={message} />}
       <AddButton path={"/travel-notes/new"} />
     </section>
   );
