@@ -42,13 +42,15 @@ function TravelNotesPage() {
       <div className="notes__cards">
         {posts.map((post) => {
           return (
-            <Link key={post.id} to={`/travel-notes/${post.id}`}>
-              <Card post={post} />
-            </Link>
+            <div className="notes__link">
+              <Link key={post.id} to={`/travel-notes/${post.id}`}>
+                <Card post={post} />
+              </Link>
+            </div>
           );
         })}
       </div>
-      <AddButton path={"/travel-notes/new"}/>
+      <AddButton path={"/travel-notes/new"} />
     </section>
   );
 }

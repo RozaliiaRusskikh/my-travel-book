@@ -73,4 +73,14 @@
       padding: 0 8rem;
     }
   }
+
+  &__link {
+    @include tablet {
+      padding-right: 1.5rem;
+    }
+
+    @include desktop {
+      margin-right: 3rem;
+    }
+  }
 }
