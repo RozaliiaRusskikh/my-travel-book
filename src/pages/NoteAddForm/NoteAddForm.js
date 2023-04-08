@@ -117,17 +117,21 @@ function NoteAddForm() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("year", selectedYear);
+    formData.append("country", selectedCountry.label);
+    formData.append("image_path", `${baseURL}/${image.name}`);
+    formData.append("long", long);
+    formData.append("lat", lat);
+    formData.append("title", title);
+
     if (isFormValid()) {
       axios
-        .post(`${baseURL}/posts`, {
-          name: name,
-          description: description,
-          year: selectedYear,
-          country: selectedCountry.label,
-          image_path: `${baseURL}/${image.name}`,
-          long: long,
-          lat: lat,
-          title: title,
+        .post(`${baseURL}/posts`, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
         })
         .then((response) => {
           if (response.status === 201) {
@@ -308,9 +312,10 @@ function NoteAddForm() {
             Image:
           </label>
           <input
-            name="uploaded_file"
+            filename={image}
             id="image"
             type="file"
+            accept="image/*"
             onChange={handleImageUpload}
             className="note-form__image"
           />
