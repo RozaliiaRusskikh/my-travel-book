@@ -1,6 +1,7 @@
 import "./TripDetailsPage.scss";
 import NotesHero from "../../components/NotesHero/NotesHero";
 import Attraction from "../../components/Attraction/Attraction";
+import AddButton from "../../components/AddButton/AddButton";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getData } from "../../utils/api-utils";
@@ -47,6 +48,7 @@ function TripDetailsPage() {
             </li>
           );
         })}
+      <AddButton path={`/travel-notes/${post.id}/attractions/new`} />
     </section>
   );
 }
