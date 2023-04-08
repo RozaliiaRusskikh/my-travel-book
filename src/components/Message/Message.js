@@ -6,7 +6,8 @@ function Message({ message }) {
     error: "Request failed. Please provide a valid country name",
     errorForm: "Request failed. Please make sure you are creating a post with the unique place",
     created: "Success! You have created a new note!",
-    deleted: "Post has been deleted"
+    deleted: "Note has been deleted!",
+    updated: "Note has been updated!"
   };
   return (
     <div className="app-message">

@@ -13,11 +13,11 @@
   text-shadow: 1px 1px $travelbook-black;
 
   @include tablet {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   @include desktop {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
   &--error {
@@ -37,6 +37,10 @@
   }
 
   &--deleted {
+    color: $travelbook-orange;
+  }
+
+  &--updated {
     color: $travelbook-orange;
   }
 }

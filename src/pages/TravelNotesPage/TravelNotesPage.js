@@ -76,7 +76,7 @@ function TravelNotesPage() {
                 <Card post={post} />
               </Link>
               <div className="notes__icons">
-                <Link to="/">
+                <Link to={`/travel-notes/edit/${post.id}`}>
                   <img
                     className="notes__edit-icon"
                     src={editIcon}

@@ -1,4 +1,4 @@
-import "./NoteAddForm.scss";
+import "./NoteEditForm.scss";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -8,9 +8,11 @@ import Select from "react-select";
 import Message from "../../components/Message/Message";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useParams } from "react-router-dom";
 
 function NoteAddForm() {
-  document.title = "Add New Note";
+  document.title = "Edit Note";
+  const { postId } = useParams();
   const countriesAPI = "https://restcountries.com/v3.1/all";
   const baseURL = process.env.REACT_APP_API_URL;
 
@@ -18,6 +20,7 @@ function NoteAddForm() {
 
   const [countryNames, setCountryNames] = useState([]);
   const [message, setMessage] = useState(null);
+  const [post, setPost] = useState(null);
 
   const [emptyPin, setEmptyLandPin] = useState(false);
   const [emptyDescription, setEmptyDescription] = useState(false);
@@ -57,10 +60,26 @@ function NoteAddForm() {
       });
   }, []);
 
+  useEffect(() => {
+    axios.get(`${baseURL}/posts/${postId}`).then((response) => {
+      setPost(response.data);
+      setName(response.data.name);
+      setTitle(response.data.title);
+      setDescription(response.data.description);
+      setLat(response.data.lat);
+      setLong(response.data.long);
+      setSelectedYear(response.data.year);
+    });
+  }, [baseURL, postId]);
+
   let navigate = useNavigate();
   const goToTravelNotesPage = () => {
     navigate("/travel-notes");
   };
+
+  if (!post) {
+    return <h3 className="loading">Loading...</h3>;
+  }
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -131,13 +150,13 @@ function NoteAddForm() {
 
     if (isFormValid()) {
       axios
-        .post(`${baseURL}/posts`, formData, {
+        .put(`${baseURL}/posts/${postId}`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((response) => {
-          if (response.status === 201) {
+          if (response.status === 200) {
             //redirect to the Travel Notes page and display a flash message
-            setFlashMessage("created");
+            setFlashMessage("updated");
             setTimeout(() => {
               goToTravelNotesPage();
             }, 2000);
