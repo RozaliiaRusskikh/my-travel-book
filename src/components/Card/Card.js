@@ -1,6 +1,7 @@
 import "./Card.scss";
 
 function Card({ post }) {
+
   return (
     <article className="post-card">
       <img className="post-card__image" src={post.image_path} alt={post.name} />

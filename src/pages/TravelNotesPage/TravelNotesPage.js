@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { getData } from "../../utils/api-utils";
 import { useState, useEffect } from "react";
 import AddButton from "../../components/AddButton/AddButton";
+import deleteIcon from "../../assets/icons/icon-delete.svg";
+import editIcon from "../../assets/icons/pencil.svg";
 
 function TravelNotesPage() {
   document.title = "My Travel Notes";
@@ -18,6 +20,10 @@ function TravelNotesPage() {
 
   if (!posts) {
     return <h3 className="loading">Loading...</h3>;
+  }
+
+  function handleDelete() {
+    console.log("Delete");
   }
 
   return (
@@ -42,10 +48,25 @@ function TravelNotesPage() {
       <div className="notes__cards">
         {posts.map((post) => {
           return (
-            <div className="notes__link">
-              <Link key={post.id} to={`/travel-notes/${post.id}`}>
+            <div key={post.id} className="notes__link">
+              <Link to={`/travel-notes/${post.id}`}>
                 <Card post={post} />
               </Link>
+              <div className="notes__icons">
+                <Link to="/">
+                  <img
+                    className="notes__edit-icon"
+                    src={editIcon}
+                    alt="edit icon"
+                  />
+                </Link>
+                <img
+                  onClick={handleDelete}
+                  className="notes__delete-icon"
+                  src={deleteIcon}
+                  alt="delete icon"
+                />
+              </div>
             </div>
           );
         })}
