@@ -5,7 +5,7 @@ import axios from "axios";
 import FormError from "../../components/FormError/FormError";
 import Button from "../../components/Button/Button";
 import Select from "react-select";
-import Message from "../../components/FormError/FormError";
+import Message from "../../components/Message/Message";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -14,7 +14,6 @@ function NoteAddForm() {
   const baseURL = process.env.REACT_APP_API_URL;
 
   const empty = "This field is required";
-  const invalidCoordinates = "Invalid coordinate";
 
   const [countryNames, setCountryNames] = useState([]);
   const [message, setMessage] = useState(null);
@@ -27,7 +26,6 @@ function NoteAddForm() {
   const [emptyLat, setEmptyLat] = useState(false);
   const [emptyTitle, setEmptyTitle] = useState(false);
   const [emptyImage, setEmptyImage] = useState(false);
-  const [incorrectCoordinate, setIncorrectCoordinate] = useState(false);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -92,19 +90,6 @@ function NoteAddForm() {
     setSelectedCountry(selectedOption);
   };
 
-  const isCoordinatesInvalid = () => {
-    if (
-      lat.match("/^[+-]?(([1-8]?[0-9])(.[0-9]{1,6})?|90(.0{1,6})?)$/") ||
-      long.match(
-        "/^[+-]?((([1-9]?[0-9]|1[0-7][0-9])(.[0-9]{1,6})?)|180(.0{1,6})?)$/"
-      )
-    ) {
-      return false;
-    }
-
-    return true;
-  };
-
   const isFieldEmpty = (input) => {
     if (input.length === 0) {
       return true;
@@ -126,10 +111,6 @@ function NoteAddForm() {
       return false;
     }
 
-    if (isCoordinatesInvalid()) {
-      return false;
-    }
-
     return true;
   };
 
@@ -142,28 +123,26 @@ function NoteAddForm() {
           name: name,
           description: description,
           year: selectedYear,
-          country: selectedCountry,
+          country: selectedCountry.label,
           image_path: `${baseURL}/${image.name}`,
           long: long,
           lat: lat,
           title: title,
         })
         .then((response) => {
-          if (response.status === 200) {
+          if (response.status === 201) {
             //redirect to the Travel Notes page and display a flash message
-            goToTravelNotesPage();
-            setFlashMessage("submitted");
-          } else {
-            console.log(response.message);
-            setFlashMessage("duplicate");
+            setFlashMessage("created");
+            setTimeout(() => {
+              goToTravelNotesPage();
+            }, 2000);
           }
         })
         .catch((error) => {
-          setFlashMessage("error");
+          setFlashMessage("errorForm");
           console.error("We are having a problem accessing the API: " + error);
         });
     } else {
-      console.log(`${baseURL}/${image.name}`);
       if (isFieldEmpty(name)) {
         setEmptyLandPin(true);
       } else {
@@ -203,11 +182,6 @@ function NoteAddForm() {
         setEmptyTitle(true);
       } else {
         setEmptyTitle(false);
-      }
-      if (isCoordinatesInvalid()) {
-        setIncorrectCoordinate(true);
-      } else {
-        setIncorrectCoordinate(false);
       }
     }
   };
@@ -258,7 +232,6 @@ function NoteAddForm() {
             value={long}
             onChange={handleLongChange}
           ></input>
-          {incorrectCoordinate && <FormError message={invalidCoordinates} />}
           {emptyLong && <FormError message={empty} />}
           <label className="note-form__label" htmlFor="lat">
             Latitude:
@@ -273,7 +246,6 @@ function NoteAddForm() {
             value={lat}
             onChange={handleLatChange}
           ></input>
-          {incorrectCoordinate && <FormError message={invalidCoordinates} />}
           {emptyLat && <FormError message={empty} />}
           <label className="note-form__label" htmlFor="country">
             Country:
@@ -336,7 +308,7 @@ function NoteAddForm() {
             Image:
           </label>
           <input
-            name="image"
+            name="uploaded_file"
             id="image"
             type="file"
             onChange={handleImageUpload}

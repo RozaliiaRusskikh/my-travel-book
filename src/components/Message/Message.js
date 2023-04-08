@@ -3,8 +3,9 @@ import "./Message.scss";
 function Message({ message }) {
   const messages = {
     submitted: "Success! Below, you'll find some facts about the country",
-    error: "Request failed. Please provide a valid input",
-    duplicate: "Post about this location already exists"
+    error: "Request failed. Please provide a valid country name",
+    errorForm: "Request failed. Please make sure you are creating a post with the unique place",
+    created: "Success! You have created a new note!",
   };
   return (
     <div className="app-message">

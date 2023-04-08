@@ -24,16 +24,15 @@
     color: $error;
   }
 
+  &--errorForm {
+    color: $error;
+  }
+
   &--submitted {
     color: $travelbook-white;
   }
 
-  &--duplicate {
-    color: $error;
-  }
-
-
-  &--notFound {
-    color: $error;
+  &--created {
+    color: green;
   }
 }
