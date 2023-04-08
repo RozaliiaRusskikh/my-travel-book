@@ -44,7 +44,11 @@ function TripDetailsPage() {
         attractions.map((attraction, index) => {
           return (
             <li key={attraction.id}>
-              <Attraction attraction={attraction} index={index} />
+              <Attraction
+                attraction={attraction}
+                index={index}
+                postId={postId}
+              />
             </li>
           );
         })}
