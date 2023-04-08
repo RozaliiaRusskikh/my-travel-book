@@ -19,7 +19,7 @@ function TravelNotesPage() {
 
   useEffect(() => {
     getData(`${baseURL}/posts`, setPosts);
-  }, [posts, baseURL]);
+  }, [baseURL]);
 
   if (!posts) {
     return <h3 className="loading">Loading...</h3>;
@@ -39,6 +39,9 @@ function TravelNotesPage() {
         .then((response) => {
           if (response.status === 204) {
             setFlashMessage("deleted");
+            setTimeout(() => {
+              window.location.reload();
+            }, 3000);
           }
         })
         .catch((error) => {
