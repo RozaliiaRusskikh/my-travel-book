@@ -1,5 +1,5 @@
 import "./AttractionEditForm.scss";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import FormError from "../../components/FormError/FormError";
@@ -23,6 +23,15 @@ function AttractionEditForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/posts/${postId}/attractions/${attractionId}`)
+      .then((response) => {
+        setName(response.data.name);
+        setDescription(response.data.description);
+      });
+  }, [baseURL, postId, attractionId]);
 
   let navigate = useNavigate();
   const goToTripDetailsPage = () => {
@@ -69,13 +78,17 @@ function AttractionEditForm() {
 
     if (isFormValid()) {
       axios
-        .post(`${baseURL}/posts/${postId}/attractions`, formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        })
+        .put(
+          `${baseURL}/posts/${postId}/attractions/${attractionId}`,
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        )
         .then((response) => {
           if (response.status === 201) {
             //redirect to the Trip Details Page page and display a flash message
-            setFlashMessage("created");
+            setFlashMessage("updated");
             setTimeout(() => {
               goToTripDetailsPage();
             }, 2000);
