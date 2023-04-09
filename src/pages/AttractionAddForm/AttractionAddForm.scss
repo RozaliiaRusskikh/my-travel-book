@@ -66,6 +66,11 @@
     @include desktop {
       width: 20%;
     }
+
+    &__bottom-image {
+      margin-top: 0.3rem;
+      width: 100%;
+    }
   }
 
   &__buttons {

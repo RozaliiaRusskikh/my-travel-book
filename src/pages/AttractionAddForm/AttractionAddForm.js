@@ -1,5 +1,6 @@
 import "./AttractionAddForm.scss";
-import { useState} from "react";
+import waterfall from "../../assets/images/waterfall.jpg";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import FormError from "../../components/FormError/FormError";
@@ -112,62 +113,69 @@ function AttractionAddForm() {
   }
 
   return (
-    <form
-      onSubmit={handleFormSubmit}
-      className="attraction-form"
-      encType="multipart/form-data"
-    >
-      <h2 className="attraction-form__title">
-        Please enter information about an attraction to create your card
-      </h2>
-      {message && <Message message={message} />}
-      <label className="attraction-form__label" htmlFor="name">
-        Title:
-      </label>
-      <input
-        className={`attraction-form__input-box ${
-          emptyName ? "attraction-form__input-box--invalid" : ""
-        }`}
-        id="name"
-        type="text"
-        name="name"
-        value={name}
-        onChange={handleNameChange}
-      ></input>
-      {emptyName && <FormError message={empty} />}
-      <label className="attraction-form__label" htmlFor="description">
-        Description:
-      </label>
-      <textarea
-        rows="5"
-        id="description"
-        className={`attraction-form__input-box ${
-          emptyDescription ? "attraction-form__input-box--invalid" : ""
-        }`}
-        type="text"
-        name="description"
-        value={description}
-        onChange={handleDescriptionChange}
-      ></textarea>
-      {emptyDescription && <FormError message={empty} />}
-      <label className="attraction-form__label" htmlFor="image">
-        Image:
-      </label>
-      <input
-        filename={image}
-        id="image"
-        type="file"
-        accept="image/*"
-        onChange={handleImageUpload}
-        className="attraction-form__image"
+    <>
+      <img
+        className="attraction-form__bottom-image"
+        src={waterfall}
+        alt="world globe"
       />
-      {emptyImage && <FormError message={empty} />}
+      <form
+        onSubmit={handleFormSubmit}
+        className="attraction-form"
+        encType="multipart/form-data"
+      >
+        <h2 className="attraction-form__title">
+          Please enter information about an attraction to create your card
+        </h2>
+        {message && <Message message={message} />}
+        <label className="attraction-form__label" htmlFor="name">
+          Title:
+        </label>
+        <input
+          className={`attraction-form__input-box ${
+            emptyName ? "attraction-form__input-box--invalid" : ""
+          }`}
+          id="name"
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleNameChange}
+        ></input>
+        {emptyName && <FormError message={empty} />}
+        <label className="attraction-form__label" htmlFor="description">
+          Description:
+        </label>
+        <textarea
+          rows="5"
+          id="description"
+          className={`attraction-form__input-box ${
+            emptyDescription ? "attraction-form__input-box--invalid" : ""
+          }`}
+          type="text"
+          name="description"
+          value={description}
+          onChange={handleDescriptionChange}
+        ></textarea>
+        {emptyDescription && <FormError message={empty} />}
+        <label className="attraction-form__label" htmlFor="image">
+          Image:
+        </label>
+        <input
+          filename={image}
+          id="image"
+          type="file"
+          accept="image/*"
+          onChange={handleImageUpload}
+          className="attraction-form__image"
+        />
+        {emptyImage && <FormError message={empty} />}
 
-      <div className="attraction-form__buttons">
-        <Button onClick={goToTripDetailsPage} text="Cancel" />
-        <Button type="submit" text="Save" />
-      </div>
-    </form>
+        <div className="attraction-form__buttons">
+          <Button onClick={goToTripDetailsPage} text="Cancel" />
+          <Button type="submit" text="Save" />
+        </div>
+      </form>
+    </>
   );
 }
 
