@@ -25,20 +25,25 @@
 
     @include tablet {
       font-size: 1.7rem;
+      margin-top: 2rem;
     }
 
     @include desktop {
       font-size: 2rem;
-      padding-top: 3rem;
+      margin-top: 3rem;
     }
   }
 
   &__table {
     @include tablet {
       display: flex;
-      padding: 1rem;
+      padding: 3.5rem;
       justify-content: center;
       margin-bottom: 2rem;
+
+      @include desktop {
+        padding: 4rem;
+      }
     }
   }
 

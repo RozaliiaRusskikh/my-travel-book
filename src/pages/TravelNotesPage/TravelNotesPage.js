@@ -70,6 +70,10 @@ function TravelNotesPage() {
           destinations and embark on your own adventures. So, come along with me
           on this journey and let's explore the world together!
         </p>
+        <p className="notes__intro notes__intro--quote">
+          “The world is too big to stay in one place and life is too short to do
+          just one thing."
+        </p>
       </div>
       <div className="notes__cards">
         {posts.map((post) => {
