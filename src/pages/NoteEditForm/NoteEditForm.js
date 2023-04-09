@@ -1,6 +1,7 @@
 import "./NoteEditForm.scss";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import flow from "../../assets/images/flow.jpg";
 import axios from "axios";
 import FormError from "../../components/FormError/FormError";
 import Button from "../../components/Button/Button";
@@ -218,135 +219,138 @@ function NoteAddForm() {
   }
 
   return (
-    <form
-      onSubmit={handleFormSubmit}
-      className="note-form"
-      encType="multipart/form-data"
-    >
-      <h2 className="note-form__title">
-        Please enter information about your trip to create your travel note
-      </h2>
-      {message && <Message message={message} />}
-      <div className="note-form__table">
-        <div className="note-form__left">
-          <label className="note-form__label" htmlFor="name">
-            Place:
-          </label>
-          <input
-            className={`note-form__input-box ${
-              emptyPin ? "note-form__input-box--invalid" : ""
-            }`}
-            id="name"
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleNameChange}
-          ></input>
-          {emptyPin && <FormError message={empty} />}
-          <label className="note-form__label" htmlFor="long">
-            Longitude:
-          </label>
-          <input
-            className={`note-form__input-box ${
-              emptyLong ? "note-form__input-box--invalid" : ""
-            }`}
-            id="long"
-            type="number"
-            name="long"
-            value={long}
-            onChange={handleLongChange}
-          ></input>
-          {emptyLong && <FormError message={empty} />}
-          <label className="note-form__label" htmlFor="lat">
-            Latitude:
-          </label>
-          <input
-            className={`note-form__input-box ${
-              emptyLat ? "note-form__input-box--invalid" : ""
-            }`}
-            id="lat"
-            type="number"
-            name="lat"
-            value={lat}
-            onChange={handleLatChange}
-          ></input>
-          {emptyLat && <FormError message={empty} />}
-          <label className="note-form__label" htmlFor="country">
-            Country:
-          </label>
-          <Select
-            id="country"
-            className="note-form__select"
-            value={selectedCountry}
-            onChange={handleCountryChange}
-            placeholder="Select a country..."
-            options={countryNames}
-            isSearchable
-          />
-          {emptyCountry && <FormError message={empty} />}
+    <>
+      <img className="note-form__form-image" src={flow} alt="flow" />
+      <form
+        onSubmit={handleFormSubmit}
+        className="note-form"
+        encType="multipart/form-data"
+      >
+        <h2 className="note-form__title">
+          Please enter information about your trip to create your travel note
+        </h2>
+        {message && <Message message={message} />}
+        <div className="note-form__table">
+          <div className="note-form__left">
+            <label className="note-form__label" htmlFor="name">
+              Place:
+            </label>
+            <input
+              className={`note-form__input-box ${
+                emptyPin ? "note-form__input-box--invalid" : ""
+              }`}
+              id="name"
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleNameChange}
+            ></input>
+            {emptyPin && <FormError message={empty} />}
+            <label className="note-form__label" htmlFor="long">
+              Longitude:
+            </label>
+            <input
+              className={`note-form__input-box ${
+                emptyLong ? "note-form__input-box--invalid" : ""
+              }`}
+              id="long"
+              type="number"
+              name="long"
+              value={long}
+              onChange={handleLongChange}
+            ></input>
+            {emptyLong && <FormError message={empty} />}
+            <label className="note-form__label" htmlFor="lat">
+              Latitude:
+            </label>
+            <input
+              className={`note-form__input-box ${
+                emptyLat ? "note-form__input-box--invalid" : ""
+              }`}
+              id="lat"
+              type="number"
+              name="lat"
+              value={lat}
+              onChange={handleLatChange}
+            ></input>
+            {emptyLat && <FormError message={empty} />}
+            <label className="note-form__label" htmlFor="country">
+              Country:
+            </label>
+            <Select
+              id="country"
+              className="note-form__select"
+              value={selectedCountry}
+              onChange={handleCountryChange}
+              placeholder="Select a country..."
+              options={countryNames}
+              isSearchable
+            />
+            {emptyCountry && <FormError message={empty} />}
+          </div>
+          <div className="note-form__right">
+            <label className="note-form__label" htmlFor="title">
+              Title:
+            </label>
+            <input
+              className={`note-form__input-box ${
+                emptyTitle ? "note-form__input-box--invalid" : ""
+              }`}
+              id="title"
+              type="text"
+              name="title"
+              value={title}
+              onChange={handleTitleChange}
+            ></input>
+            {emptyTitle && <FormError message={empty} />}
+            <label className="note-form__label" htmlFor="description">
+              Description:
+            </label>
+            <textarea
+              rows="9"
+              id="description"
+              className={`note-form__input-box ${
+                emptyDescription ? "note-form__input-box--invalid" : ""
+              }`}
+              type="text"
+              name="description"
+              value={description}
+              onChange={handleDescriptionChange}
+            ></textarea>
+            {emptyDescription && <FormError message={empty} />}
+            <label className="note-form__label" htmlFor="year">
+              Year:
+            </label>
+            <DatePicker
+              id="year"
+              className="note-form__date-picker"
+              selected={selectedYear ? new Date(selectedYear, 0, 1) : null}
+              onChange={(date) => setSelectedYear(date.getFullYear())}
+              dateFormat="yyyy"
+              placeholderText="Select year..."
+              showYearPicker
+            />
+            {emptyYear && <FormError message={empty} />}
+            <label className="note-form__label" htmlFor="image">
+              Image:
+            </label>
+            <input
+              filename={image}
+              id="image"
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              className="note-form__image"
+            />
+            {emptyImage && <FormError message={empty} />}
+          </div>
         </div>
-        <div className="note-form__right">
-          <label className="note-form__label" htmlFor="title">
-            Title:
-          </label>
-          <input
-            className={`note-form__input-box ${
-              emptyTitle ? "note-form__input-box--invalid" : ""
-            }`}
-            id="title"
-            type="text"
-            name="title"
-            value={title}
-            onChange={handleTitleChange}
-          ></input>
-          {emptyTitle && <FormError message={empty} />}
-          <label className="note-form__label" htmlFor="description">
-            Description:
-          </label>
-          <textarea
-            rows="5"
-            id="description"
-            className={`note-form__input-box ${
-              emptyDescription ? "note-form__input-box--invalid" : ""
-            }`}
-            type="text"
-            name="description"
-            value={description}
-            onChange={handleDescriptionChange}
-          ></textarea>
-          {emptyDescription && <FormError message={empty} />}
-          <label className="note-form__label" htmlFor="year">
-            Year:
-          </label>
-          <DatePicker
-            id="year"
-            className="note-form__date-picker"
-            selected={selectedYear ? new Date(selectedYear, 0, 1) : null}
-            onChange={(date) => setSelectedYear(date.getFullYear())}
-            dateFormat="yyyy"
-            placeholderText="Select year..."
-            showYearPicker
-          />
-          {emptyYear && <FormError message={empty} />}
-          <label className="note-form__label" htmlFor="image">
-            Image:
-          </label>
-          <input
-            filename={image}
-            id="image"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-            className="note-form__image"
-          />
-          {emptyImage && <FormError message={empty} />}
+        <div className="note-form__buttons">
+          <Button onClick={goToTravelNotesPage} text="Cancel" />
+          <Button type="submit" text="Save" />
         </div>
-      </div>
-      <div className="note-form__buttons">
-        <Button onClick={goToTravelNotesPage} text="Cancel" />
-        <Button type="submit" text="Save" />
-      </div>
-    </form>
+      </form>
+    </>
   );
 }
 

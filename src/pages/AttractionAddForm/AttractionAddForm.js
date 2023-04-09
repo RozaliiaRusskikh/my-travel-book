@@ -117,7 +117,7 @@ function AttractionAddForm() {
       <img
         className="attraction-form__bottom-image"
         src={waterfall}
-        alt="world globe"
+        alt="waterfall"
       />
       <form
         onSubmit={handleFormSubmit}

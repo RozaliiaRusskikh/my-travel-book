@@ -1,7 +1,7 @@
 import "./NoteAddForm.scss";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import lake from "../../assets/images/lake.jpg"
+import lake from "../../assets/images/lake.jpg";
 import axios from "axios";
 import FormError from "../../components/FormError/FormError";
 import Button from "../../components/Button/Button";
@@ -201,28 +201,24 @@ function NoteAddForm() {
 
   return (
     <>
-      <img
-        className="note-form__bottom-image"
-        src={lake}
-        alt="world globe"
-      />
+      <img className="note-add-form__bottom-image" src={lake} alt="lake" />
       <form
         onSubmit={handleFormSubmit}
-        className="note-form"
+        className="note-add-form"
         encType="multipart/form-data"
       >
-        <h2 className="note-form__title">
+        <h2 className="note-add-form__title">
           Please enter information about your trip to create your travel note
         </h2>
         {message && <Message message={message} />}
-        <div className="note-form__table">
-          <div className="note-form__left">
-            <label className="note-form__label" htmlFor="name">
+        <div className="note-add-form__table">
+          <div className="note-add-form__left">
+            <label className="note-add-form__label" htmlFor="name">
               Place:
             </label>
             <input
-              className={`note-form__input-box ${
-                emptyPin ? "note-form__input-box--invalid" : ""
+              className={`note-add-form__input-box ${
+                emptyPin ? "note-add-form__input-box--invalid" : ""
               }`}
               id="name"
               type="text"
@@ -231,12 +227,12 @@ function NoteAddForm() {
               onChange={handleNameChange}
             ></input>
             {emptyPin && <FormError message={empty} />}
-            <label className="note-form__label" htmlFor="long">
+            <label className="note-add-form__label" htmlFor="long">
               Longitude:
             </label>
             <input
-              className={`note-form__input-box ${
-                emptyLong ? "note-form__input-box--invalid" : ""
+              className={`note-add-form__input-box ${
+                emptyLong ? "note-add-form__input-box--invalid" : ""
               }`}
               id="long"
               type="number"
@@ -245,12 +241,12 @@ function NoteAddForm() {
               onChange={handleLongChange}
             ></input>
             {emptyLong && <FormError message={empty} />}
-            <label className="note-form__label" htmlFor="lat">
+            <label className="note-add-form__label" htmlFor="lat">
               Latitude:
             </label>
             <input
-              className={`note-form__input-box ${
-                emptyLat ? "note-form__input-box--invalid" : ""
+              className={`note-add-form__input-box ${
+                emptyLat ? "note-add-form__input-box--invalid" : ""
               }`}
               id="lat"
               type="number"
@@ -259,12 +255,12 @@ function NoteAddForm() {
               onChange={handleLatChange}
             ></input>
             {emptyLat && <FormError message={empty} />}
-            <label className="note-form__label" htmlFor="country">
+            <label className="note-add-form__label" htmlFor="country">
               Country:
             </label>
             <Select
               id="country"
-              className="note-form__select"
+              className="note-add-form__select"
               value={selectedCountry}
               onChange={handleCountryChange}
               placeholder="Select a country..."
@@ -273,13 +269,13 @@ function NoteAddForm() {
             />
             {emptyCountry && <FormError message={empty} />}
           </div>
-          <div className="note-form__right">
-            <label className="note-form__label" htmlFor="title">
+          <div className="note-add-form__right">
+            <label className="note-add-form__label" htmlFor="title">
               Title:
             </label>
             <input
-              className={`note-form__input-box ${
-                emptyTitle ? "note-form__input-box--invalid" : ""
+              className={`note-add-form__input-box ${
+                emptyTitle ? "note-add-form__input-box--invalid" : ""
               }`}
               id="title"
               type="text"
@@ -288,14 +284,14 @@ function NoteAddForm() {
               onChange={handleTitleChange}
             ></input>
             {emptyTitle && <FormError message={empty} />}
-            <label className="note-form__label" htmlFor="description">
+            <label className="note-add-form__label" htmlFor="description">
               Description:
             </label>
             <textarea
-              rows="5"
+              rows="9"
               id="description"
-              className={`note-form__input-box ${
-                emptyDescription ? "note-form__input-box--invalid" : ""
+              className={`note-add-form__input-box ${
+                emptyDescription ? "note-add-form__input-box--invalid" : ""
               }`}
               type="text"
               name="description"
@@ -303,12 +299,12 @@ function NoteAddForm() {
               onChange={handleDescriptionChange}
             ></textarea>
             {emptyDescription && <FormError message={empty} />}
-            <label className="note-form__label" htmlFor="year">
+            <label className="note-add-form__label" htmlFor="year">
               Year:
             </label>
             <DatePicker
               id="year"
-              className="note-form__date-picker"
+              className="note-add-form__date-picker"
               selected={selectedYear ? new Date(selectedYear, 0, 1) : null}
               onChange={(date) => setSelectedYear(date.getFullYear())}
               dateFormat="yyyy"
@@ -316,7 +312,7 @@ function NoteAddForm() {
               showYearPicker
             />
             {emptyYear && <FormError message={empty} />}
-            <label className="note-form__label" htmlFor="image">
+            <label className="note-add-form__label" htmlFor="image">
               Image:
             </label>
             <input
@@ -325,12 +321,12 @@ function NoteAddForm() {
               type="file"
               accept="image/*"
               onChange={handleImageUpload}
-              className="note-form__image"
+              className="note-add-form__image"
             />
             {emptyImage && <FormError message={empty} />}
           </div>
         </div>
-        <div className="note-form__buttons">
+        <div className="note-add-form__buttons">
           <Button onClick={goToTravelNotesPage} text="Cancel" />
           <Button type="submit" text="Save" />
         </div>
