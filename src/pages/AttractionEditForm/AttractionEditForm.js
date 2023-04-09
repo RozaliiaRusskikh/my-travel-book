@@ -138,7 +138,7 @@ function AttractionEditForm() {
         encType="multipart/form-data"
       >
         <h2 className="attraction-form__title">
-          Please enter information about an attraction to create your card
+          Please update information about attraction
         </h2>
         {message && <Message message={message} />}
         <label className="attraction-form__label" htmlFor="name">

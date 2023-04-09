@@ -227,7 +227,7 @@ function NoteAddForm() {
         encType="multipart/form-data"
       >
         <h2 className="note-form__title">
-          Please enter information about your trip to create your travel note
+          Please update information about your trip
         </h2>
         {message && <Message message={message} />}
         <div className="note-form__table">
