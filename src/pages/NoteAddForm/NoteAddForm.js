@@ -1,7 +1,7 @@
 import "./NoteAddForm.scss";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import lake from "../../assets/images/lake.jpg";
+import globe from "../../assets/images/globe.jpeg";
 import axios from "axios";
 import FormError from "../../components/FormError/FormError";
 import Button from "../../components/Button/Button";
@@ -201,7 +201,7 @@ function NoteAddForm() {
 
   return (
     <>
-      <img className="note-add-form__bottom-image" src={lake} alt="lake" />
+      <img className="note-add-form__bottom-image" src={globe} alt="globe" />
       <form
         onSubmit={handleFormSubmit}
         className="note-add-form"

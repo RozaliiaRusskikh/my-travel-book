@@ -1,7 +1,7 @@
 import "./NoteEditForm.scss";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import flow from "../../assets/images/flow.jpg";
+import globe from "../../assets/images/globe.jpeg";
 import axios from "axios";
 import FormError from "../../components/FormError/FormError";
 import Button from "../../components/Button/Button";
@@ -220,7 +220,7 @@ function NoteAddForm() {
 
   return (
     <>
-      <img className="note-form__form-image" src={flow} alt="flow" />
+      <img className="note-form__form-image" src={globe} alt="flow" />
       <form
         onSubmit={handleFormSubmit}
         className="note-form"

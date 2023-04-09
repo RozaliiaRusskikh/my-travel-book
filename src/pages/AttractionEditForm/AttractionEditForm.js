@@ -1,5 +1,5 @@
 import "./AttractionEditForm.scss";
-import globe from "../../assets/images/globe.png";
+import globe from "../../assets/images/globe.jpeg";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";

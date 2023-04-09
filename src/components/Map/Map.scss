@@ -53,12 +53,12 @@
     background-color: $travelbook-white;
 
     @include tablet {
-      width: 95vw;
+      width: 90vw;
       border-style: double;
     }
 
     @include desktop {
-      width: 90vw;
+      width: 85vw;
     }
   }
   &__geography {

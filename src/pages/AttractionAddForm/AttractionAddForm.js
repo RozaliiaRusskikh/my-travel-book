@@ -1,5 +1,5 @@
 import "./AttractionAddForm.scss";
-import waterfall from "../../assets/images/waterfall.jpg";
+import globe from "../../assets/images/globe.jpeg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -115,25 +115,25 @@ function AttractionAddForm() {
   return (
     <>
       <img
-        className="attraction-form__bottom-image"
-        src={waterfall}
-        alt="waterfall"
+        className="attraction-form-add__bottom-image"
+        src={globe}
+        alt="globe"
       />
       <form
         onSubmit={handleFormSubmit}
-        className="attraction-form"
+        className="attraction-form-add"
         encType="multipart/form-data"
       >
-        <h2 className="attraction-form__title">
+        <h2 className="attraction-form-add__title">
           Please enter information about an attraction to create your card
         </h2>
         {message && <Message message={message} />}
-        <label className="attraction-form__label" htmlFor="name">
+        <label className="attraction-form-add__label" htmlFor="name">
           Title:
         </label>
         <input
-          className={`attraction-form__input-box ${
-            emptyName ? "attraction-form__input-box--invalid" : ""
+          className={`attraction-form-add__input-box ${
+            emptyName ? "attraction-form-add__input-box--invalid" : ""
           }`}
           id="name"
           type="text"
@@ -142,14 +142,14 @@ function AttractionAddForm() {
           onChange={handleNameChange}
         ></input>
         {emptyName && <FormError message={empty} />}
-        <label className="attraction-form__label" htmlFor="description">
+        <label className="attraction-form-add__label" htmlFor="description">
           Description:
         </label>
         <textarea
           rows="8"
           id="description"
-          className={`attraction-form__input-box ${
-            emptyDescription ? "attraction-form__input-box--invalid" : ""
+          className={`attraction-form-add__input-box ${
+            emptyDescription ? "attraction-form-add__input-box--invalid" : ""
           }`}
           type="text"
           name="description"
@@ -157,7 +157,7 @@ function AttractionAddForm() {
           onChange={handleDescriptionChange}
         ></textarea>
         {emptyDescription && <FormError message={empty} />}
-        <label className="attraction-form__label" htmlFor="image">
+        <label className="attraction-form-add__label" htmlFor="image">
           Image:
         </label>
         <input
@@ -166,11 +166,11 @@ function AttractionAddForm() {
           type="file"
           accept="image/*"
           onChange={handleImageUpload}
-          className="attraction-form__image"
+          className="attraction-form-add__image"
         />
         {emptyImage && <FormError message={empty} />}
 
-        <div className="attraction-form__buttons">
+        <div className="attraction-form-add__buttons">
           <Button onClick={goToTripDetailsPage} text="Cancel" />
           <Button type="submit" text="Save" />
         </div>
