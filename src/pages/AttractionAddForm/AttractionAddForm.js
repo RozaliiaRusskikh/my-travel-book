@@ -146,7 +146,7 @@ function AttractionAddForm() {
           Description:
         </label>
         <textarea
-          rows="5"
+          rows="8"
           id="description"
           className={`attraction-form__input-box ${
             emptyDescription ? "attraction-form__input-box--invalid" : ""
