@@ -33,7 +33,7 @@ function TravelNotesPage() {
   }
 
   function deletePost(id) {
-    if (window.confirm("Delete this post?")) {
+    if (window.confirm("Delete this note?")) {
       axios
         .delete(`${baseURL}/posts/${id}`)
         .then((response) => {
