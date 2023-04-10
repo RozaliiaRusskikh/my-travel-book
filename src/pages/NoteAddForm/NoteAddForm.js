@@ -327,8 +327,8 @@ function NoteAddForm() {
           </div>
         </div>
         <div className="note-add-form__buttons">
-          <Button onClick={goToTravelNotesPage} text="Cancel" isDisabled={false}/>
           <Button type="submit" text="Save" isDisabled={false}/>
+          <Button onClick={goToTravelNotesPage} text="Cancel" isDisabled={false}/>
         </div>
       </form>
     </>

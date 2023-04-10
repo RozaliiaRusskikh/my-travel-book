@@ -67,8 +67,8 @@
     display: flex;
     justify-content: flex-end;
 
-    & > :first-child {
-      margin-right: 1rem;
+    & :nth-child(2) {
+      margin-left: 1rem;
       background-color: $travelbook-white;
       color: $travelbook-black;
 
