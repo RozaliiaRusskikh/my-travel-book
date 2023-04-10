@@ -29,7 +29,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem("user", JSON.stringify(user));
+    if (Object.keys(user).length > 0) {
+      sessionStorage.setItem("user", JSON.stringify(user));
+    }
   }, [user]);
 
   const onLogin = (email, password) => {
