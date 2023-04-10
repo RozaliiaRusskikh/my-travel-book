@@ -1,5 +1,6 @@
 import "./TripDetailsPage.scss";
 import NotesHero from "../../components/NotesHero/NotesHero";
+import NoPage from "../../pages/NoPage/NoPage";
 import Attraction from "../../components/Attraction/Attraction";
 import AddButton from "../../components/AddButton/AddButton";
 import { useEffect, useState } from "react";
@@ -24,7 +25,7 @@ function TripDetailsPage() {
   }, [baseURL, postId]);
 
   if (!post) {
-    return <h3 className="loading">Loading...</h3>;
+    return <NoPage text={`Sorry. Cannot access this travel note.`} link="HOME" />;
   }
 
   document.title = post.name;
