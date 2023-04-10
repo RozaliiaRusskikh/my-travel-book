@@ -63,19 +63,49 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/travel-notes" element={<TravelNotesPage />} />
-            <Route path="/travel-notes/new" element={<NoteAddForm />} />
+            <Route
+              path="/travel-notes/new"
+              element={
+                user.isAuthenticated ? (
+                  <NoteAddForm />
+                ) : (
+                  <NoPage text={"Login to add a note."} link={"LOGIN"} />
+                )
+              }
+            />
             <Route
               path="/travel-notes/edit/:postId"
-              element={<NoteEditForm />}
+              element={
+                user.isAuthenticated ? (
+                  <NoteEditForm />
+                ) : (
+                  <NoPage text={"Login to edit a note."} link={"LOGIN"} />
+                )
+              }
             />
             <Route path="/travel-notes/:postId" element={<TripDetailsPage />} />
             <Route
               path="/travel-notes/:postId/attractions/new"
-              element={<AttractionAddForm />}
+              element={
+                user.isAuthenticated ? (
+                  <AttractionAddForm />
+                ) : (
+                  <NoPage text={"Login to add an attraction."} link={"LOGIN"} />
+                )
+              }
             />
             <Route
               path="/travel-notes/:postId/attractions/edit/:attractionId"
-              element={<AttractionEditForm />}
+              element={
+                user.isAuthenticated ? (
+                  <AttractionEditForm />
+                ) : (
+                  <NoPage
+                    text={"Login to edit an attraction."}
+                    link={"LOGIN"}
+                  />
+                )
+              }
             />
             <Route path="/country-facts" element={<CountryFactsPage />} />
             <Route
@@ -84,7 +114,15 @@ function App() {
                 !user.isAuthenticated ? <Login /> : <Navigate replace to="/" />
               }
             />
-            <Route path="*" element={<NoPage />} />
+            <Route
+              path="*"
+              element={
+                <NoPage
+                  text="Sorry! You have landed on a page that doesn't exist."
+                  link="HOME"
+                />
+              }
+            />
           </Routes>
           <Footer />
         </UserContext.Provider>

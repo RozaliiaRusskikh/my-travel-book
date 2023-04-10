@@ -44,7 +44,6 @@
 
   &__link {
     color: $travelbook-blue;
-    text-decoration: underline;
     font-size: 1rem;
 
     @include tablet {
@@ -68,4 +67,8 @@
       font-size: 2rem;
     }
   }
+}
+
+.not-found-page strong {
+  text-decoration: underline;
 }
