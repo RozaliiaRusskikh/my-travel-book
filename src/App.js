@@ -69,7 +69,7 @@ function App() {
                 user.isAuthenticated ? (
                   <NoteAddForm />
                 ) : (
-                  <NoPage text={"Login to add a note."} link={"LOGIN"} />
+                  <NoPage text={" Login to add a note."} link={"LOGIN"} />
                 )
               }
             />
@@ -79,7 +79,7 @@ function App() {
                 user.isAuthenticated ? (
                   <NoteEditForm />
                 ) : (
-                  <NoPage text={"Login to edit a note."} link={"LOGIN"} />
+                  <NoPage text={" Login to edit a note."} link={"LOGIN"} />
                 )
               }
             />
@@ -90,7 +90,7 @@ function App() {
                 user.isAuthenticated ? (
                   <AttractionAddForm />
                 ) : (
-                  <NoPage text={"Login to add an attraction."} link={"LOGIN"} />
+                  <NoPage text={" Login to add an attraction."} link={"LOGIN"} />
                 )
               }
             />
@@ -101,7 +101,7 @@ function App() {
                   <AttractionEditForm />
                 ) : (
                   <NoPage
-                    text={"Login to edit an attraction."}
+                    text={" Login to edit an attraction."}
                     link={"LOGIN"}
                   />
                 )
@@ -118,7 +118,7 @@ function App() {
               path="*"
               element={
                 <NoPage
-                  text="Sorry! You have landed on a page that doesn't exist."
+                  text=" Sorry! You have landed on a page that doesn't exist."
                   link="HOME"
                 />
               }
