@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/pencil.svg";
 import axios from "axios";
+import UserContext from "../../context/userContext";
+import { useContext } from "react";
 
 function Attraction({ attraction, index, postId }) {
   const baseURL = process.env.REACT_APP_API_URL;
   const [message, setMessage] = useState(null);
+  const { user } = useContext(UserContext);
 
   function deleteAttraction(id) {
     if (window.confirm("Delete this attraction?")) {
@@ -52,25 +55,27 @@ function Attraction({ attraction, index, postId }) {
             <p className="attration-section__description">
               {attraction.description}
             </p>
-            <div className="attration-section__icons">
-              <Link
-                to={`/travel-notes/${postId}/attractions/edit/${attraction.id}/`}
-              >
+            {user.isAuthenticated && (
+              <div className="attration-section__icons">
+                <Link
+                  to={`/travel-notes/${postId}/attractions/edit/${attraction.id}/`}
+                >
+                  <img
+                    className="attration-section__edit-icon"
+                    src={editIcon}
+                    alt="edit icon"
+                  />
+                </Link>
                 <img
-                  className="attration-section__edit-icon"
-                  src={editIcon}
-                  alt="edit icon"
+                  onClick={() => {
+                    deleteAttraction(attraction.id);
+                  }}
+                  className="attration-section__delete-icon"
+                  src={deleteIcon}
+                  alt="delete icon"
                 />
-              </Link>
-              <img
-                onClick={() => {
-                  deleteAttraction(attraction.id);
-                }}
-                className="attration-section__delete-icon"
-                src={deleteIcon}
-                alt="delete icon"
-              />
-            </div>
+              </div>
+            )}
           </div>
         </div>
         <img

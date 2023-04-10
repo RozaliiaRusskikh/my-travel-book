@@ -2,14 +2,18 @@ import "./Login.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
+import UserContext from "../../context/userContext";
+import { useContext } from "react";
 
 const Login = () => {
+  const { onLogin } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const isEnabled = email.length > 0 && password.length > 0;
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    onLogin(email, password);
   };
 
   const handleEmailChange = (event) => {
@@ -52,8 +56,13 @@ const Login = () => {
           ></input>
         </p>
         <div className="login-container__buttons">
-          <Button onClick={handleCancel} text="Cancel" isDisabled={false}/>
-          <Button type="submit" text="Login" disabled={!isEnabled} isDisabled={!isEnabled}/>
+          <Button onClick={handleCancel} text="Cancel" isDisabled={false} />
+          <Button
+            type="submit"
+            text="Login"
+            disabled={!isEnabled}
+            isDisabled={!isEnabled}
+          />
         </div>
       </form>
     </section>

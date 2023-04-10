@@ -77,11 +77,15 @@
   }
 
   &__main-nav-item {
-    padding: 0 0.5rem;
+    padding: 0 0.4rem;
     border-right: 2px solid $travelbook-blue;
 
     @include tablet {
       padding: 0 0.9rem;
+    }
+
+    &--globe {
+      font-size: 1.3rem;
     }
 
     &--globe:hover {

@@ -10,12 +10,15 @@ import AddButton from "../../components/AddButton/AddButton";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/pencil.svg";
 import axios from "axios";
+import UserContext from "../../context/userContext";
+import { useContext } from "react";
 
 function TravelNotesPage() {
   document.title = "My Travel Notes";
   const [posts, setPosts] = useState("");
   const [message, setMessage] = useState(null);
   const baseURL = process.env.REACT_APP_API_URL;
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     getData(`${baseURL}/posts`, setPosts);
@@ -82,29 +85,31 @@ function TravelNotesPage() {
               <Link to={`/travel-notes/${post.id}`}>
                 <Card post={post} />
               </Link>
-              <div className="notes__icons">
-                <Link to={`/travel-notes/edit/${post.id}`}>
+              {user.isAuthenticated && (
+                <div className="notes__icons">
+                  <Link to={`/travel-notes/edit/${post.id}`}>
+                    <img
+                      className="notes__edit-icon"
+                      src={editIcon}
+                      alt="edit icon"
+                    />
+                  </Link>
                   <img
-                    className="notes__edit-icon"
-                    src={editIcon}
-                    alt="edit icon"
+                    onClick={() => {
+                      deletePost(post.id);
+                    }}
+                    className="notes__delete-icon"
+                    src={deleteIcon}
+                    alt="delete icon"
                   />
-                </Link>
-                <img
-                  onClick={() => {
-                    deletePost(post.id);
-                  }}
-                  className="notes__delete-icon"
-                  src={deleteIcon}
-                  alt="delete icon"
-                />
-              </div>
+                </div>
+              )}
             </div>
           );
         })}
       </div>
       {message && <Message message={message} />}
-      <AddButton path={"/travel-notes/new"} />
+      {user.isAuthenticated && <AddButton path={"/travel-notes/new"} />}
     </section>
   );
 }

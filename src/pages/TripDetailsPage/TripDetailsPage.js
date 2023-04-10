@@ -5,12 +5,15 @@ import AddButton from "../../components/AddButton/AddButton";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getData } from "../../utils/api-utils";
+import UserContext from "../../context/userContext";
+import { useContext } from "react";
 
 function TripDetailsPage() {
   const [post, setPost] = useState(null);
   const [attractions, setAttractions] = useState(null);
   const baseURL = process.env.REACT_APP_API_URL;
   const { postId } = useParams();
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     getData(`${baseURL}/posts/${postId}`, setPost);
@@ -52,7 +55,9 @@ function TripDetailsPage() {
             </li>
           );
         })}
-      <AddButton path={`/travel-notes/${post.id}/attractions/new`} />
+      {user.isAuthenticated && (
+        <AddButton path={`/travel-notes/${post.id}/attractions/new`} />
+      )}
     </section>
   );
 }
