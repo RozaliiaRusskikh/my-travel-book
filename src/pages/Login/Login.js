@@ -56,13 +56,13 @@ const Login = () => {
           ></input>
         </p>
         <div className="login-container__buttons">
-          <Button onClick={handleCancel} text="Cancel" isDisabled={false} />
           <Button
             type="submit"
             text="Login"
             disabled={!isEnabled}
             isDisabled={!isEnabled}
           />
+          <Button onClick={handleCancel} text="Cancel" isDisabled={false} />
         </div>
       </form>
     </section>

@@ -81,7 +81,7 @@
     border-right: 2px solid $travelbook-blue;
 
     @include tablet {
-      padding: 0 0.9rem;
+      padding: 0 0.7rem;
     }
 
     &--globe {
@@ -93,6 +93,15 @@
       animation-duration: 6s;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
+    }
+
+    &--logout {
+      color: $travelbook-orange;
+      cursor: pointer;
+    }
+
+    &--logout:hover {
+      color: $travelbook-blue;
     }
   }
 

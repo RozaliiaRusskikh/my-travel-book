@@ -10,15 +10,27 @@ import CountryFactsPage from "./pages/CountryFactsPage/CountryFactsPage";
 import NoteAddForm from "./pages/NoteAddForm/NoteAddForm";
 import AttractionAddForm from "./pages/AttractionAddForm/AttractionAddForm";
 import NoteEditForm from "./pages/NoteEditForm/NoteEditForm";
+import NoPage from "./pages/NoPage/NoPage";
 import AttractionEditForm from "./pages/AttractionEditForm/AttractionEditForm";
 import Login from "./pages/Login/Login";
 import firebase from "./firebase";
-import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useState, useEffect } from "react";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 function App() {
   const [user, setUser] = useState({});
   const auth = getAuth(firebase); //Firebase auth
+
+  useEffect(() => {
+    const data = sessionStorage.getItem("user");
+    if (data) {
+      setUser(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
 
   const onLogin = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
@@ -33,21 +45,23 @@ function App() {
       });
   };
 
+  const onLogout = () => {
+    signOut(auth)
+      .then(() => {
+        setUser({ isAuthenticated: false });
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
     <div className="app">
       <BrowserRouter>
-        <UserContext.Provider value={{ user, onLogin }}>
+        <UserContext.Provider value={{ user, onLogin, onLogout }}>
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route
-              path="/login"
-              element={
-                !user.isAuthenticated ? <Login /> : <Navigate replace to="/" />
-              }
-            />
             <Route path="/travel-notes" element={<TravelNotesPage />} />
-            <Route path="/travel-notes/new" element={<NoteAddForm />} /> 
+            <Route path="/travel-notes/new" element={<NoteAddForm />} />
             <Route
               path="/travel-notes/edit/:postId"
               element={<NoteEditForm />}
@@ -62,6 +76,13 @@ function App() {
               element={<AttractionEditForm />}
             />
             <Route path="/country-facts" element={<CountryFactsPage />} />
+            <Route
+              path="/login"
+              element={
+                !user.isAuthenticated ? <Login /> : <Navigate replace to="/" />
+              }
+            />
+            <Route path="*" element={<NoPage />} />
           </Routes>
           <Footer />
         </UserContext.Provider>

@@ -3,8 +3,18 @@ import logo from "../../assets/logo/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faSignOut } from "@fortawesome/free-solid-svg-icons";
+import UserContext from "../../context/userContext";
+import { useContext } from "react";
 
 function Header() {
+  const { user, onLogout } = useContext(UserContext);
+
+  const handleLogoutClick = (event) => {
+    event.preventDefault();
+    onLogout();
+  };
+
   return (
     <header className="header">
       <nav className="header__main-nav">
@@ -57,11 +67,17 @@ function Header() {
               Country Facts
             </NavLink>
           </li>
-          <li className="header__main-nav-item header__main-nav-item--globe">
-            <Link to="/login">
-              <FontAwesomeIcon icon={faGlobe} color={"#1676ba"} />
-            </Link>
-          </li>
+          {user.isAuthenticated ? (
+            <li className="header__main-nav-item header__main-nav-item--logout">
+              <FontAwesomeIcon onClick={handleLogoutClick} icon={faSignOut} />
+            </li>
+          ) : (
+            <li className="header__main-nav-item header__main-nav-item--globe">
+              <Link to="/login">
+                <FontAwesomeIcon icon={faGlobe} color={"#1676ba"} />
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
     </header>
