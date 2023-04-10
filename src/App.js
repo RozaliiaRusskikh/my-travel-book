@@ -10,6 +10,7 @@ import NoteAddForm from "./pages/NoteAddForm/NoteAddForm";
 import AttractionAddForm from "./pages/AttractionAddForm/AttractionAddForm";
 import NoteEditForm from "./pages/NoteEditForm/NoteEditForm";
 import AttractionEditForm from "./pages/AttractionEditForm/AttractionEditForm";
+import Login from "./pages/Login/Login";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/travel-notes" element={<TravelNotesPage />} />
           <Route path="/travel-notes/new" element={<NoteAddForm />} />
           <Route path="/travel-notes/edit/:postId" element={<NoteEditForm />} />

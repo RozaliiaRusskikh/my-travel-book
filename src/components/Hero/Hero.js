@@ -16,7 +16,7 @@ function Hero() {
           <p className="hero__question">
             Want to get information about a specific country?
           </p>
-          <Button onClick={navigateToCountryPage} text="Start Exploring" />
+          <Button onClick={navigateToCountryPage} text="Start Exploring" isDisabled={false}/>
         </div>
       </div>
     </section>

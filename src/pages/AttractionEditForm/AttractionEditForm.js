@@ -184,8 +184,8 @@ function AttractionEditForm() {
         {emptyImage && <FormError message={empty} />}
 
         <div className="attraction-form__buttons">
-          <Button onClick={goToTripDetailsPage} text="Cancel" />
-          <Button type="submit" text="Save" />
+          <Button onClick={goToTripDetailsPage} text="Cancel" isDisabled={false}/>
+          <Button type="submit" text="Save"isDisabled={false}/>
         </div>
       </form>
     </>

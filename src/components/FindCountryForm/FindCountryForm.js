@@ -83,7 +83,7 @@ function FindCountryForm({ getFacts }) {
             onChange={handleChangeInput}
             value={countryRequest}
           />
-          <Button text="Find" />
+          <Button text="Find" isDisabled={false}/>
         </div>
         {message && <Message message={message} />}
       </form>
