@@ -3,7 +3,8 @@ import { useState } from "react";
 import FindCountryForm from "../../components/FindCountryForm/FindCountryForm";
 import CountryFact from "../../components/CountryFact/CountryFact";
 import PolaroidImageCard from "../../components/PolaroidImageCard/PolaroidImageCard";
-import donkey from "../../assets/images/donkey.jpg";
+import lake from "../../assets/images/lake.jpg";
+import waterfall from "../../assets/images/waterfall.jpg";
 import camels from "../../assets/images/camels.jpg";
 import kulSharif from "../../assets/images/kul-sharif.jpg";
 import {
@@ -86,9 +87,10 @@ function CountryFactsPage() {
         </section>
       )}
       {!countryFacts && <div className="country-facts-section__polaroid-cards">
-        <PolaroidImageCard image={donkey} title="Donkey in Petra, Jordan" />
+        <PolaroidImageCard image={lake} title="Lake Louise, Canada" />
+        <PolaroidImageCard image={waterfall} title="Niagara Falls, Canada" />
         <PolaroidImageCard image={kulSharif} title="Kul Sharif Mosque in Kazan, Russia" />
-        <PolaroidImageCard image={camels} title="Camels in Jordan" />
+        <PolaroidImageCard image={camels} title="Bedouin people, Jordan" />
       </div>}
     </section>
   );
