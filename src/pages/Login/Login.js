@@ -5,11 +5,10 @@ import Button from "../../components/Button/Button";
 import UserContext from "../../context/userContext";
 import { useContext } from "react";
 
-const Login = () => {
+const Login = ({ error }) => {
   const { onLogin } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const isEnabled = email.length > 0 && password.length > 0;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -59,11 +58,14 @@ const Login = () => {
           <Button
             type="submit"
             text="Login"
-            disabled={!isEnabled}
-            isDisabled={!isEnabled}
           />
-          <Button onClick={handleCancel} text="Cancel" isDisabled={false} />
+          <Button onClick={handleCancel} text="Cancel" />
         </div>
+        {error && (
+          <h4 className="login-container__error">
+            Incorrect password or email!
+          </h4>
+        )}
       </form>
     </section>
   );

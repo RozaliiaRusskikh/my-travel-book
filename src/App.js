@@ -19,6 +19,7 @@ import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 function App() {
   const [user, setUser] = useState({});
+  const [error, setError] = useState(null);
   const auth = getAuth(firebase); //Firebase auth
 
   useEffect(() => {
@@ -41,8 +42,10 @@ function App() {
           email: response.user["email"],
           isAuthenticated: true,
         });
+        setError(false);
       })
       .catch((error) => {
+        setError(true);
         console.error(error);
       });
   };
@@ -90,7 +93,10 @@ function App() {
                 user.isAuthenticated ? (
                   <AttractionAddForm />
                 ) : (
-                  <NoPage text={" Login to add an attraction."} link={"LOGIN"} />
+                  <NoPage
+                    text={" Login to add an attraction."}
+                    link={"LOGIN"}
+                  />
                 )
               }
             />
@@ -111,7 +117,11 @@ function App() {
             <Route
               path="/login"
               element={
-                !user.isAuthenticated ? <Login /> : <Navigate replace to="/" />
+                !user.isAuthenticated ? (
+                  <Login error={error} />
+                ) : (
+                  <Navigate replace to="/" />
+                )
               }
             />
             <Route

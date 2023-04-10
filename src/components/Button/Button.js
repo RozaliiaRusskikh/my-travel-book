@@ -1,8 +1,8 @@
 import "./Button.scss";
 
-function Button({ text, onClick, isDisabled}) {
+function Button({ text, onClick }) {
   return (
-    <button onClick={onClick} className={isDisabled ? "button button--disabled" : "button"}>
+    <button onClick={onClick} className="button">
       {text}
     </button>
   );

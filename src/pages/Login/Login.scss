@@ -77,4 +77,9 @@
       }
     }
   }
+
+  &__error {
+    color: $error;
+    text-align: center;
+  }
 }
