@@ -1,6 +1,6 @@
 import "./App.scss";
 import UserContext from "./context/userContext";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
@@ -14,7 +14,7 @@ import AttractionEditForm from "./pages/AttractionEditForm/AttractionEditForm";
 import Login from "./pages/Login/Login";
 import firebase from "./firebase";
 import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function App() {
   const [user, setUser] = useState({});
@@ -40,9 +40,14 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            <Route
+              path="/login"
+              element={
+                !user.isAuthenticated ? <Login /> : <Navigate replace to="/" />
+              }
+            />
             <Route path="/travel-notes" element={<TravelNotesPage />} />
-            <Route path="/travel-notes/new" element={<NoteAddForm />} />
+            <Route path="/travel-notes/new" element={<NoteAddForm />} /> 
             <Route
               path="/travel-notes/edit/:postId"
               element={<NoteEditForm />}
