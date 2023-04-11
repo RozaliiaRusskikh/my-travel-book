@@ -7,7 +7,6 @@ import {
   Geographies,
   Geography,
   Marker,
-  ZoomableGroup,
 } from "react-simple-maps";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
@@ -43,46 +42,44 @@ function Map() {
           projection="geoMercator"
           projectionConfig={{ scale: 150 }}
         >
-          <ZoomableGroup>
-            <Geographies geography={geoUrl}>
-              {({ geographies }) =>
-                geographies.map((geo) => (
-                  <Geography
-                    className="map-section__geography"
-                    id="anchor-element-id"
-                    key={geo.rsmKey}
-                    geography={geo}
-                    onMouseEnter={() => {
-                      const { name } = geo.properties;
-                      setTooltip(name);
-                    }}
-                    onMouseLeave={() => {
-                      setTooltip("");
-                    }}
-                  />
-                ))
-              }
-            </Geographies>
-            {markers.map(({ name, long, lat, id }) => (
-              <Marker key={name} coordinates={[long, lat]}>
-                <Link to={`/travel-notes/${id}`}>
-                  <circle
-                    className="map-section__circle"
-                    r={7}
-                    strokeWidth={1.5}
-                  />
-                </Link>
-                <text
-                  className="map-section__text"
-                  textAnchor="end"
-                  y={-12}
-                  alignmentBaseline="middle"
-                >
-                  {name}
-                </text>
-              </Marker>
-            ))}
-          </ZoomableGroup>
+          <Geographies geography={geoUrl}>
+            {({ geographies }) =>
+              geographies.map((geo) => (
+                <Geography
+                  className="map-section__geography"
+                  id="anchor-element-id"
+                  key={geo.rsmKey}
+                  geography={geo}
+                  onMouseEnter={() => {
+                    const { name } = geo.properties;
+                    setTooltip(name);
+                  }}
+                  onMouseLeave={() => {
+                    setTooltip("");
+                  }}
+                />
+              ))
+            }
+          </Geographies>
+          {markers.map(({ name, long, lat, id }) => (
+            <Marker key={name} coordinates={[long, lat]}>
+              <Link to={`/travel-notes/${id}`}>
+                <circle
+                  className="map-section__circle"
+                  r={7}
+                  strokeWidth={1.5}
+                />
+              </Link>
+              <text
+                className="map-section__text"
+                textAnchor="end"
+                y={-12}
+                alignmentBaseline="middle"
+              >
+                {name}
+              </text>
+            </Marker>
+          ))}
         </ComposableMap>
       </div>
     </section>
