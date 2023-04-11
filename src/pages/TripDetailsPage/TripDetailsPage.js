@@ -25,7 +25,8 @@ function TripDetailsPage() {
   }, [baseURL, postId]);
 
   if (!post) {
-    return <NoPage text={` Sorry. Cannot access this travel note.`} link="HOME" />;
+    return <h3 className="loading">Loading...</h3>;
+    //return <NoPage text={` Sorry. Cannot access this travel note.`} link="HOME" />;
   }
 
   document.title = post.name;
