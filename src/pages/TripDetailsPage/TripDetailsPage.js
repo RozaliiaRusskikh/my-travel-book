@@ -39,14 +39,14 @@ function TripDetailsPage() {
     getData(`${baseURL}/posts/${postId}/attractions`, setAttractions);
   }, [baseURL, postId]);
 
-  if (!post) {
-    return <h3 className="loading">Loading...</h3>;
-  }
-
   if (Object.keys(post).length === 0) {
     return (
       <NoPage text={` Sorry. This travel note doesn't exist.`} link="HOME" />
     );
+  }
+
+  if (!post) {
+    return <h3 className="loading">Loading...</h3>;
   }
 
   document.title = post.name;
