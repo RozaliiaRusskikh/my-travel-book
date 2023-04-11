@@ -1,6 +1,5 @@
 import "./TripDetailsPage.scss";
 import NotesHero from "../../components/NotesHero/NotesHero";
-import NoPage from "../../pages/NoPage/NoPage";
 import Attraction from "../../components/Attraction/Attraction";
 import AddButton from "../../components/AddButton/AddButton";
 import { useEffect, useState } from "react";
@@ -24,9 +23,6 @@ function TripDetailsPage() {
         if (response.status === 200) {
           setPost(response.data);
         }
-        if (response.status === 404) {
-          setPost({});
-        }
       })
       .catch((error) => {
         console.error(
@@ -38,12 +34,6 @@ function TripDetailsPage() {
   useEffect(() => {
     getData(`${baseURL}/posts/${postId}/attractions`, setAttractions);
   }, [baseURL, postId]);
-
-  if (Object.keys(post).length === 0) {
-    return (
-      <NoPage text={` Sorry. This travel note doesn't exist.`} link="HOME" />
-    );
-  }
 
   if (!post) {
     return <h3 className="loading">Loading...</h3>;
