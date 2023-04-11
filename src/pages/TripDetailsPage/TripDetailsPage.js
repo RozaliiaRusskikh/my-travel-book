@@ -16,7 +16,6 @@ function TripDetailsPage() {
   const baseURL = process.env.REACT_APP_API_URL;
   const { postId } = useParams();
   const { user } = useContext(UserContext);
-  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     axios
@@ -25,8 +24,8 @@ function TripDetailsPage() {
         if (response.status === 200) {
           setPost(response.data);
         }
-        if ((response.status === 404)) {
-          setNotFound(true);
+        if (response.status === 404) {
+          setPost({});
         }
       })
       .catch((error) => {
@@ -44,7 +43,7 @@ function TripDetailsPage() {
     return <h3 className="loading">Loading...</h3>;
   }
 
-  if (notFound) {
+  if (Object.keys(post).length === 0) {
     return (
       <NoPage text={` Sorry. This travel note doesn't exist.`} link="HOME" />
     );
