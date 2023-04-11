@@ -25,7 +25,7 @@ function TripDetailsPage() {
         if (response.status === 200) {
           setPost(response.data);
         }
-        if ((response.status = 404)) {
+        if ((response.status === 404)) {
           setNotFound(true);
         }
       })
