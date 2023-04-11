@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { getData } from "../../utils/api-utils";
 import UserContext from "../../context/userContext";
 import { useContext } from "react";
+import axios from "axios";
 
 function TripDetailsPage() {
   const [post, setPost] = useState(null);
@@ -15,9 +16,24 @@ function TripDetailsPage() {
   const baseURL = process.env.REACT_APP_API_URL;
   const { postId } = useParams();
   const { user } = useContext(UserContext);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
-    getData(`${baseURL}/posts/${postId}`, setPost);
+    axios
+      .get(`${baseURL}/posts/${postId}`)
+      .then((response) => {
+        if (response.status === 200) {
+          setPost(response.data);
+        }
+        if ((response.status = 404)) {
+          setNotFound(true);
+        }
+      })
+      .catch((error) => {
+        console.error(
+          "We are having a problem accessing the posts API: " + error
+        );
+      });
   }, [baseURL, postId]);
 
   useEffect(() => {
@@ -26,7 +42,12 @@ function TripDetailsPage() {
 
   if (!post) {
     return <h3 className="loading">Loading...</h3>;
-    //return <NoPage text={` Sorry. Cannot access this travel note.`} link="HOME" />;
+  }
+
+  if (notFound) {
+    return (
+      <NoPage text={` Sorry. This travel note doesn't exist.`} link="HOME" />
+    );
   }
 
   document.title = post.name;
