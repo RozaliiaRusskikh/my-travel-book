@@ -50,7 +50,6 @@
     width: 100%;
     position: absolute;
     bottom: 0;
-    width: calc(100% - 2rem);
     margin: 0;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
@@ -58,6 +57,7 @@
     padding: 0.4rem 1rem;
 
     @include tablet {
+      width: calc(100% - 2rem);
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
       width: 14rem;
