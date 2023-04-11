@@ -1,4 +1,4 @@
-# My Travel Book ![logo](https://user-images.githubusercontent.com/30150366/231244690-843363d5-6fd3-4c9c-a4c9-e1dda329d4df.png)
+# My Travel Book 
 
 Link: https://my-travel-memory-book.netlify.app
 
