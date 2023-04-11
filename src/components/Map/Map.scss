@@ -56,10 +56,6 @@
       width: 90vw;
       border-style: double;
     }
-
-    @include desktop {
-      width: 85vw;
-    }
   }
   &__geography {
     fill: $travelbook-background;
