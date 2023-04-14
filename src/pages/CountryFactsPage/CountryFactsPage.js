@@ -86,12 +86,15 @@ function CountryFactsPage() {
           </a>
         </section>
       )}
-      {!countryFacts && <div className="country-facts-section__polaroid-cards">
+      <div className="country-facts-section__polaroid-cards">
         <PolaroidImageCard image={lake} title="Lake Louise, Canada" />
         <PolaroidImageCard image={waterfall} title="Niagara Falls, Canada" />
-        <PolaroidImageCard image={kulSharif} title="Kul Sharif Mosque in Kazan, Russia" />
+        <PolaroidImageCard
+          image={kulSharif}
+          title="Kul Sharif Mosque in Kazan, Russia"
+        />
         <PolaroidImageCard image={camels} title="Bedouin people, Jordan" />
-      </div>}
+      </div>
     </section>
   );
 }
