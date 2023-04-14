@@ -25,6 +25,8 @@ Also, I want to track my trips by pinning my locations on a map which can help m
 - Post, update, delete trip notes and attractions
 - Pin locations on a map
 - View Quick country facts
+- Fully responsive:
+![all-devices-black](https://user-images.githubusercontent.com/30150366/232122856-54e94782-2656-46e0-861e-ee18ff91d4f2.png)
 
 ## API references
 
