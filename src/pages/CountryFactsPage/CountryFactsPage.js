@@ -87,7 +87,7 @@ function CountryFactsPage() {
         </section>
       )}
       <h1 className="country-facts-section__title">
-        Flippable Photo Gallery Cards
+        Photo Gallery Cards
       </h1>
       <div className="country-facts-section__polaroid-cards">
         <PolaroidImageCard image={lake} title="Lake Louise, Canada" />
