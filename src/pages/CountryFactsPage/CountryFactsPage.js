@@ -87,33 +87,13 @@ function CountryFactsPage() {
           </a>
         </section>
       )}
-<<<<<<< HEAD
-      {!countryFacts && (
-        <div className="country-facts-section__polaroid-cards">
-          <PolaroidImageCard
-            image={lake}
-            title="Lake Louise, Canada"
-            quote='"To travel is to discover that everyone is wrong about other countries." – Aldous Huxley'
-          />
-          <PolaroidImageCard
-            image={waterfall}
-            title="Niagara Falls, Canada"
-            quote='"The world is a book and those who do not travel read only one page." - Saint Augustine'
-          />
-          <PolaroidImageCard
-            image={kulSharif}
-            title="Kul Sharif Mosque in Kazan, Russia"
-            quote='"Traveling – it leaves you speechless, then turns you into a storyteller." – Ibn Battuta'
-          />
-          <PolaroidImageCard
-            image={camels}
-            title="Bedouin people, Jordan"
-            quote='"Better to see something once than hear about it a thousand times." – Asian Proverb'
-          />
-        </div>
-      )}
-=======
-      <h1 className="country-facts-section__title">Flip Image Cards</h1>
+      <h1 className="country-facts-section__title">
+        Flip Image Cards with Travel Quotes To Inspire Wanderlust
+      </h1>
+      <p>
+        If you’re looking for inspiration to fuel your wanderlust, you’re
+        certain to find the perfect quotation above!
+      </p>
       <div className="country-facts-section__polaroid-cards">
         <PolaroidImageCard
           image={lake}
@@ -142,7 +122,6 @@ function CountryFactsPage() {
           quote='"If you think adventure is dangerous, try routine, it is lethal." - Paulo Coelho'
         />
       </div>
->>>>>>> develop
     </section>
   );
 }
