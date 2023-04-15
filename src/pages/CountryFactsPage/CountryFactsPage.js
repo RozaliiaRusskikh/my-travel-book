@@ -88,11 +88,11 @@ function CountryFactsPage() {
         </section>
       )}
       <h1 className="country-facts-section__title">
-        Flip Image Cards with Travel Quotes To Inspire Wanderlust
+        Image Cards with Travel Quotes To Inspire Wanderlust
       </h1>
       <p className="country-facts-section__cards-description">
         If you’re looking for inspiration to fuel your wanderlust, you’re
-        certain to find the perfect quotation above! Just flip a card.
+        certain to find the perfect quotation below! Just flip a card.
       </p>
       <div className="country-facts-section__polaroid-cards">
         <PolaroidImageCard
