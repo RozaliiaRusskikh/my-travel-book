@@ -6,6 +6,7 @@ import PolaroidImageCard from "../../components/PolaroidImageCard/PolaroidImageC
 import lake from "../../assets/images/lake.jpg";
 import waterfall from "../../assets/images/waterfall.jpg";
 import camels from "../../assets/images/camels.jpg";
+import squamish from "../../assets/images/squamish.jpg";
 import kulSharif from "../../assets/images/kul-sharif.jpg";
 import {
   faLanguage,
@@ -108,6 +109,11 @@ function CountryFactsPage() {
           image={camels}
           title="Bedouin people, Jordan"
           quote='"Better to see something once than hear about it a thousand times." – Asian Proverb'
+        />
+        <PolaroidImageCard
+          image={squamish}
+          title="Sea to Sky Gondola in Squamish, Canada"
+          quote='"If you think adventure is dangerous, try routine, it is lethal." - Paulo Coelho'
         />
       </div>
     </section>
