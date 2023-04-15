@@ -86,12 +86,31 @@ function CountryFactsPage() {
           </a>
         </section>
       )}
-      {!countryFacts && <div className="country-facts-section__polaroid-cards">
-        <PolaroidImageCard image={lake} title="Lake Louise, Canada" />
-        <PolaroidImageCard image={waterfall} title="Niagara Falls, Canada" />
-        <PolaroidImageCard image={kulSharif} title="Kul Sharif Mosque in Kazan, Russia" />
-        <PolaroidImageCard image={camels} title="Bedouin people, Jordan" />
-      </div>}
+      {!countryFacts && (
+        <div className="country-facts-section__polaroid-cards">
+          <PolaroidImageCard
+            image={lake}
+            title="Lake Louise, Canada"
+            quote='"To travel is to discover that everyone is wrong about other countries." – Aldous Huxley'
+          />
+          <PolaroidImageCard
+            image={waterfall}
+            title="Niagara Falls, Canada"
+            quote='"The world is a book and those who do not travel read only one page." - Saint Augustine'
+          />
+          <PolaroidImageCard
+            image={kulSharif}
+            title="Kul Sharif Mosque in Kazan, Russia"
+            quote='"Traveling – it leaves you speechless, then turns you into a storyteller." – Ibn Battuta
+            '
+          />
+          <PolaroidImageCard
+            image={camels}
+            title="Bedouin people, Jordan"
+            quote='"Better to see something once than hear about it a thousand times." – Asian Proverb'
+          />
+        </div>
+      )}
     </section>
   );
 }
