@@ -86,20 +86,6 @@ function CountryFactsPage() {
           </a>
         </section>
       )}
-<<<<<<< HEAD
-      <h1 className="country-facts-section__title">
-        Photo Gallery Cards
-      </h1>
-      <div className="country-facts-section__polaroid-cards">
-        <PolaroidImageCard image={lake} title="Lake Louise, Canada" />
-        <PolaroidImageCard image={waterfall} title="Niagara Falls, Canada" />
-        <PolaroidImageCard
-          image={kulSharif}
-          title="Kul Sharif Mosque in Kazan, Russia"
-        />
-        <PolaroidImageCard image={camels} title="Bedouin people, Jordan" />
-      </div>
-=======
       {!countryFacts && (
         <div className="country-facts-section__polaroid-cards">
           <PolaroidImageCard
@@ -115,8 +101,7 @@ function CountryFactsPage() {
           <PolaroidImageCard
             image={kulSharif}
             title="Kul Sharif Mosque in Kazan, Russia"
-            quote='"Traveling – it leaves you speechless, then turns you into a storyteller." – Ibn Battuta
-            '
+            quote='"Traveling – it leaves you speechless, then turns you into a storyteller." – Ibn Battuta'
           />
           <PolaroidImageCard
             image={camels}
@@ -125,7 +110,6 @@ function CountryFactsPage() {
           />
         </div>
       )}
->>>>>>> develop
     </section>
   );
 }
