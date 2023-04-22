@@ -7,6 +7,7 @@ import lake from "../../assets/images/lake.jpg";
 import waterfall from "../../assets/images/waterfall.jpg";
 import camels from "../../assets/images/camels.jpg";
 import squamish from "../../assets/images/squamish.jpg";
+import volcano from "../../assets/images/volcano.jpg";
 import kulSharif from "../../assets/images/kul-sharif.jpg";
 import {
   faLanguage,
@@ -120,6 +121,11 @@ function CountryFactsPage() {
           image={squamish}
           title="Sea to Sky Gondola in Squamish, Canada"
           quote='"If you think adventure is dangerous, try routine, it is lethal." - Paulo Coelho'
+        />
+        <PolaroidImageCard
+          image={volcano}
+          title="Poás Volcano, Costa Rica"
+          quote='"Live your life by a compass, not a clock."– Erica Jong'
         />
       </div>
     </section>
