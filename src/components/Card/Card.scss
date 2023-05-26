@@ -33,6 +33,7 @@
     object-fit: cover;
     filter: grayscale(100%);
     transition: filter 0.3s linear;
+    content-visibility: hidden; 
 
     @include tablet {
       border-radius: 8px;

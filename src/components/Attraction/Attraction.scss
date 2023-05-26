@@ -55,6 +55,7 @@
     width: 100%;
     object-fit: cover;
     border-radius: 3px;
+    content-visibility: hidden; 
 
     @include tablet {
       width: 40%;
