@@ -15,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+  
     @include tablet {
       justify-content: flex-end;
       align-items: center;

@@ -7,6 +7,7 @@ import editIcon from "../../assets/icons/pencil.svg";
 import axios from "axios";
 import UserContext from "../../context/userContext";
 import { useContext } from "react";
+import 'lazysizes';
 
 function Attraction({ attraction, index, postId }) {
   const baseURL = process.env.REACT_APP_API_URL;
@@ -61,8 +62,9 @@ function Attraction({ attraction, index, postId }) {
                   to={`/travel-notes/${postId}/attractions/edit/${attraction.id}/`}
                 >
                   <img
-                    className="attration-section__edit-icon"
-                    src={editIcon}
+                    className="attration-section__edit-icon lazyload"
+                    data-sizes="auto"
+                    data-src={editIcon}
                     alt="edit icon"
                   />
                 </Link>
@@ -70,8 +72,9 @@ function Attraction({ attraction, index, postId }) {
                   onClick={() => {
                     deleteAttraction(attraction.id);
                   }}
-                  className="attration-section__delete-icon"
-                  src={deleteIcon}
+                  className="attration-section__delete-icon lazyload"
+                  data-sizes="auto"
+                  data-src={deleteIcon}
                   alt="delete icon"
                 />
               </div>
@@ -79,8 +82,9 @@ function Attraction({ attraction, index, postId }) {
           </div>
         </div>
         <img
-          className="attration-section__image"
-          src={attraction.image_path}
+          className="attration-section__image lazyload"
+          data-src={attraction.image_path}
+          data-sizes="auto"
           alt={attraction.name}
         />
       </article>

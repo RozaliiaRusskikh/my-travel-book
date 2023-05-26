@@ -1,6 +1,7 @@
 import "./Hero.scss";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
+import 'lazysizes';
 
 function Hero() {
   const navigate = useNavigate();

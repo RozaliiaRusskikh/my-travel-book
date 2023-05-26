@@ -9,6 +9,7 @@ import Select from "react-select";
 import Message from "../../components/Message/Message";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import 'lazysizes';
 
 function NoteAddForm() {
   document.title = "Add New Note";
@@ -201,7 +202,7 @@ function NoteAddForm() {
 
   return (
     <>
-      <img className="note-add-form__bottom-image" src={globe} alt="globe" />
+      <img className="note-add-form__bottom-image lazyload" data-sizes="auto" data-src={globe} alt="globe" />
       <form
         onSubmit={handleFormSubmit}
         className="note-add-form"
