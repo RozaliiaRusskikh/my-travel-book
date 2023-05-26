@@ -2,6 +2,7 @@ import "./NoteAddForm.scss";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import globe from "../../assets/images/globe.jpeg";
+import globeWebp from "../../assets/images/globe.webp";
 import axios from "axios";
 import FormError from "../../components/FormError/FormError";
 import Button from "../../components/Button/Button";
@@ -9,7 +10,7 @@ import Select from "react-select";
 import Message from "../../components/Message/Message";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import 'lazysizes';
+import "lazysizes";
 
 function NoteAddForm() {
   document.title = "Add New Note";
@@ -202,7 +203,15 @@ function NoteAddForm() {
 
   return (
     <>
-      <img className="note-add-form__bottom-image lazyload" data-sizes="auto" data-src={globe} alt="globe" />
+      <picture>
+        <source srcset={globeWebp} type="image/webp" />
+        <img
+          className="note-add-form__bottom-image lazyload"
+          data-sizes="auto"
+          data-src={globe}
+          alt="globe"
+        />
+      </picture>
       <form
         onSubmit={handleFormSubmit}
         className="note-add-form"

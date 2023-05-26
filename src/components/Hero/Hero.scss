@@ -5,7 +5,13 @@
 .hero {
   &__image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
-      url("../../assets/images/learn-countries.jpg");
+      image-set(
+        url("../../assets/images/learn-countries.webp")
+          type(
+            "image/webp",
+            url("../../assets/images/learn-countries.jpg") type ("image/jpg")
+          )
+      );
     height: 50vw;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,7 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  
+
     @include tablet {
       justify-content: flex-end;
       align-items: center;

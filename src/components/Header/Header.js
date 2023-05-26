@@ -1,5 +1,6 @@
 import "./Header.scss";
 import logo from "../../assets/logo/logo.png";
+import logoWebp from "../../assets/logo/logo.webp";
 import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
@@ -20,11 +21,14 @@ function Header() {
       <nav className="header__main-nav">
         <div className="header__logo-container">
           <Link className="header__logo-link" to="/">
-            <img
-              className="header__logo"
-              src={logo}
-              alt="my travel book logo"
-            />
+            <picture>
+              <source srcset={logoWebp} type="image/webp" />
+              <img
+                className="header__logo"
+                src={logo}
+                alt="my travel book logo"
+              />
+            </picture>
           </Link>
           <p className="header__logo-text">
             for the curious minded travel lovers...
