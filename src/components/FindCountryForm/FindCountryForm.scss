@@ -3,10 +3,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .find-country-form {
-  background-image: image-set(
-    url("../../assets/images/memory2.webp") type("image/webp"),
-    url("../../assets/images/memory2.jpg") type("image/jpg")
-  );
+  background-image: url("../../assets/images/memory2.webp") type("image/webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
