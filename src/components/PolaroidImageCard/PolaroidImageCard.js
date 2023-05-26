@@ -1,12 +1,13 @@
 import "./PolaroidImageCard.scss";
 import "lazysizes";
 
-function PolaroidImageCard({ image, title, quote }) {
+function PolaroidImageCard({ image, optimizedImage, title, quote }) {
   return (
     <div className="polaroid-flip-card">
       <div className="polaroid-flip-card__inner">
         <div className="polaroid-flip-card__front">
           <picture>
+            <source srcset={optimizedImage} type="image/webp" />
             <img
               className="polaroid-flip-card__image lazyload"
               data-src={image}

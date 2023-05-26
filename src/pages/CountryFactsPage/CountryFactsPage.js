@@ -9,6 +9,12 @@ import camels from "../../assets/images/camels.jpg";
 import squamish from "../../assets/images/squamish.jpg";
 import volcano from "../../assets/images/volcano.jpg";
 import kulSharif from "../../assets/images/kul-sharif.jpg";
+import lakeWebp from "../../assets/images/lake.webp";
+import waterfallWebp from "../../assets/images/waterfall.webp";
+import camelsWebp from "../../assets/images/camels.webp";
+import squamishWebp from "../../assets/images/squamish.webp";
+import volcanoWebp from "../../assets/images/volcano.webp";
+import kulSharifWebp from "../../assets/images/kul-sharif.webp";
 import {
   faLanguage,
   faMoneyBill,
@@ -98,31 +104,37 @@ function CountryFactsPage() {
       <div className="country-facts-section__polaroid-cards">
         <PolaroidImageCard
           image={lake}
+          optimizedImage={lakeWebp}
           title="Lake Louise, Canada"
           quote='"To travel is to discover that everyone is wrong about other countries." – Aldous Huxley'
         />
         <PolaroidImageCard
           image={waterfall}
+          optimizedImage={waterfallWebp}
           title="Niagara Falls, Canada"
           quote='"The world is a book and those who do not travel read only one page." - Saint Augustine'
         />
         <PolaroidImageCard
+          optimizedImage={kulSharifWebp}
           image={kulSharif}
           title="Kul Sharif Mosque in Kazan, Russia"
           quote='"Traveling – it leaves you speechless, then turns you into a storyteller." – Ibn Battuta
             '
         />
         <PolaroidImageCard
+          optimizedImage={camelsWebp}
           image={camels}
           title="Bedouin people, Jordan"
           quote='"Better to see something once than hear about it a thousand times." – Asian Proverb'
         />
         <PolaroidImageCard
+          optimizedImage={squamishWebp}
           image={squamish}
           title="Sea to Sky Gondola in Squamish, Canada"
           quote='"If you think adventure is dangerous, try routine, it is lethal." - Paulo Coelho'
         />
         <PolaroidImageCard
+          optimizedImage={volcanoWebp}
           image={volcano}
           title="Poás Volcano, Costa Rica"
           quote='"Live your life by a compass, not a clock."– Erica Jong'
