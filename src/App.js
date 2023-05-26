@@ -2,7 +2,6 @@ import "./App.scss";
 import UserContext from "./context/userContext";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 import { lazy, Suspense } from "react";
 import firebase from "./firebase";
 import { useState, useEffect } from "react";
@@ -18,6 +17,9 @@ function App() {
   );
 
   const Home = lazy(() => import("./pages/Home/Home"));
+
+  const Footer = lazy(() => import("./components/Footer/Footer"));
+
   const TripDetailsPage = lazy(() =>
     import("./pages/TripDetailsPage/TripDetailsPage")
   );
@@ -72,11 +74,11 @@ function App() {
   };
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <div className="app">
-        <BrowserRouter>
-          <UserContext.Provider value={{ user, onLogin, onLogout }}>
-            <Header />
+    <div className="app">
+      <BrowserRouter>
+        <UserContext.Provider value={{ user, onLogin, onLogout }}>
+          <Header />
+          <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/travel-notes" element={<TravelNotesPage />} />
@@ -152,10 +154,10 @@ function App() {
               />
             </Routes>
             <Footer />
-          </UserContext.Provider>
-        </BrowserRouter>
-      </div>
-    </Suspense>
+          </Suspense>
+        </UserContext.Provider>
+      </BrowserRouter>
+    </div>
   );
 }
 
