@@ -3,7 +3,14 @@ import backButton from "../../assets/icons/back-button.svg";
 import { useNavigate } from "react-router-dom";
 import "lazysizes";
 
-function NotesHero({ image, text, isBackShown, imageFallBack, imageMobile }) {
+function NotesHero({
+  image,
+  text,
+  isBackShown,
+  imageFallBack,
+  imageMobile,
+  imageMobileWebp,
+}) {
   const navigate = useNavigate();
 
   const handleIconClick = () => {
@@ -13,8 +20,22 @@ function NotesHero({ image, text, isBackShown, imageFallBack, imageMobile }) {
   return (
     <section className="notes-hero">
       <picture>
-        <source srcset={imageMobile} media="(max-width: 400px)" />
-        <source srcset={image} type="image/webp" />
+        <source media="(min-width: 768px)" srcset={image} type="image/webp" />
+        <source
+          media="(max-width: 500px)"
+          srcset={imageMobileWebp}
+          type="image/webp"
+        />
+        <source
+          media="(min-width: 768px)"
+          srcset={imageFallBack}
+          type="image/jpg"
+        />
+        <source
+          media="(max-width: 500px)"
+          srcset={imageMobile}
+          type="image/jpg"
+        />
         <img
           className="notes-hero__image lazyload"
           data-sizes="auto"

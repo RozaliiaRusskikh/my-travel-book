@@ -5,6 +5,7 @@ import Card from "../../components/Card/Card";
 import notesHero from "../../assets/images/memory5.jpg";
 import notesHeroMobile from "../../assets/images/memory5Mobile.jpg";
 import notesHeroWebp from "../../assets/images/memory5.webp";
+import notesHeroMobileWebp from "../../assets/images/memory5Mobile.webp";
 import { Link } from "react-router-dom";
 import { getData } from "../../utils/api-utils";
 import { useState, useEffect } from "react";
@@ -63,6 +64,7 @@ function TravelNotesPage() {
         image={notesHeroWebp}
         imageFallBack={notesHero}
         imageMobile={notesHeroMobile}
+        imageMobileWebp={notesHeroMobileWebp}
         text="My Wander Memories"
         isBackShown={false}
       />
