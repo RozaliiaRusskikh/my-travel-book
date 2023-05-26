@@ -3,6 +3,7 @@ import NotesHero from "../../components/NotesHero/NotesHero";
 import Message from "../../components/Message/Message";
 import Card from "../../components/Card/Card";
 import notesHero from "../../assets/images/memory5.jpg";
+import notesHeroMobile from "../../assets/images/memory5Mobile.jpg";
 import notesHeroWebp from "../../assets/images/memory5.webp";
 import { Link } from "react-router-dom";
 import { getData } from "../../utils/api-utils";
@@ -61,6 +62,7 @@ function TravelNotesPage() {
       <NotesHero
         image={notesHeroWebp}
         imageFallBack={notesHero}
+        imageMobile={notesHeroMobile}
         text="My Wander Memories"
         isBackShown={false}
       />
