@@ -72,11 +72,11 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <BrowserRouter>
-        <UserContext.Provider value={{ user, onLogin, onLogout }}>
-          <Header />
-          <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="app">
+        <BrowserRouter>
+          <UserContext.Provider value={{ user, onLogin, onLogout }}>
+            <Header />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/travel-notes" element={<TravelNotesPage />} />
@@ -151,11 +151,11 @@ function App() {
                 }
               />
             </Routes>
-          </Suspense>
-          <Footer />
-        </UserContext.Provider>
-      </BrowserRouter>
-    </div>
+            <Footer />
+          </UserContext.Provider>
+        </BrowserRouter>
+      </div>
+    </Suspense>
   );
 }
 
