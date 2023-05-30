@@ -74,7 +74,6 @@ function AttractionEditForm() {
     formData.append("image", image);
     formData.append("name", name);
     formData.append("description", description);
-    formData.append("image_path", `${baseURL}/${image.name}`);
     formData.append("post_id", postId);
 
     if (isFormValid()) {

@@ -145,8 +145,7 @@ function NoteAddForm() {
     formData.append("name", name);
     formData.append("description", description);
     formData.append("year", selectedYear);
-    formData.append("country", selectedCountry.label);
-    formData.append("image_path", `${baseURL}/${image.name}`);
+    formData.append("country", selectedCountry.label);;
     formData.append("long", long);
     formData.append("lat", lat);
     formData.append("title", title);
