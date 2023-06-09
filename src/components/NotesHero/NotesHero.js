@@ -20,7 +20,7 @@ function NotesHero({
   return (
     <section className="notes-hero">
       <picture>
-        <source media="(min-width: 768px)" srcset={image} type="image/webp" />
+        <source media="(min-width: 200px)" srcset={image} type="image/webp" />
         <source
           media="(max-width: 500px)"
           srcset={imageMobileWebp}
